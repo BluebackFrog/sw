@@ -5,11 +5,11 @@ const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const characters = {
-  boksil: {name: '복실이', description: '마당에서 반겨주는 강아지', title: '반가운 친구, 복실이', file: '01-boksil.png', width: 1199, height: 1312, greeting: '“오셨어요? 오늘 이야기가 궁금해요!”', quotes: ['“오늘은 어디 다녀오셨어요?\n그 이야기가 궁금해요!”', '“같이 있으면 더 즐겁죠!\n재미난 이야기 해봐요.”', '“천천히 이야기해 주세요.\n여기서 듣고 있을게요.”']},
-  hodam: {name: '호담이', description: '민화 속 순한 호랑이', title: '수다 친구, 호담이', file: '02-hodam.png', width: 1024, height: 1536, greeting: '“어흥! 오늘 하루 어땠어요?”', quotes: ['“산책길에 무얼 보셨어요?\n나도 그 이야기가 궁금해요.”', '“어흥은 됐고,\n수다나 한 판 할까요?”', '“서두를 것 있나요.\n우리 느긋하게 이야기해요.”']},
-  dodam: {name: '도담이', description: '이야기보따리를 푸는 도깨비', title: '능청스러운 친구, 도담이', file: '03-dodam.png', width: 1222, height: 1287, greeting: '“반가워유. 오늘은 어땠어유?”', quotes: ['“별일 없던 하루도 좋아유.\n무슨 일이 있었는지 들려줘유.”', '“재미난 얘기,\n한 보따리 풀어볼까유?”', '“천천히 말씀하셔유.\n이야기는 서두를 것 없지유.”']},
-  boksoon: {name: '복순 할머니', description: '살가운 전라도 이웃', title: '정겨운 친구, 복순 할머니', file: '05-boksoon.png', width: 1024, height: 1536, greeting: '“어서 오세요잉. 오늘은 어찌 지내셨어요?”', quotes: ['“오늘 무슨 일 있으셨어요?\n편하게 들려줘요잉.”', '“이야기 나누면 더 재밌지라.\n우리 하나씩 꺼내볼까요?”', '“천천히 말씀하셔도 괜찮아요잉.\n여기서 듣고 있을게요.”']},
-  deoksu: {name: '덕수 할아버지', description: '느긋한 경상도 이야기꾼', title: '푸근한 친구, 덕수 할아버지', file: '06-deoksu.png', width: 1024, height: 1536, greeting: '“어서 오이소. 오늘 하루는 어땠습니꺼?”', quotes: ['“그 이야기 참 좋네예.\n조금 더 들려주이소.”', '“같이 웃으면 더 좋지예.\n재미난 이야기 하나 해드릴까예?”', '“급할 거 있습니꺼.\n천천히 말씀해 주이소.”']}
+  boksil: {name: '복실이', description: '마당에서 반겨주는 강아지', title: '반가운 친구 복실이', file: '01-boksil.png', width: 1199, height: 1312, greeting: '“오셨어요? 오늘 이야기가 궁금해요!”', quotes: ['“오늘은 어디 다녀오셨어요?\n그 이야기가 궁금해요!”', '“같이 있으면 더 즐겁죠!\n재미난 이야기 해봐요.”', '“천천히 이야기해 주세요.\n여기서 듣고 있을게요.”']},
+  hodam: {name: '호담이', description: '민화 속 순한 호랑이', title: '수다 친구 호담이', file: '02-hodam.png', width: 1024, height: 1536, greeting: '“어흥! 오늘 하루 어땠어요?”', quotes: ['“산책길에 무얼 보셨어요?\n나도 그 이야기가 궁금해요.”', '“어흥은 됐고\n수다나 한 판 할까요?”', '“서두를 것 있나요.\n우리 느긋하게 이야기해요.”']},
+  dodam: {name: '도담이', description: '이야기보따리를 푸는 도깨비', title: '능청스러운 친구 도담이', file: '03-dodam.png', width: 1222, height: 1287, greeting: '“반가워유. 오늘은 어땠어유?”', quotes: ['“별일 없던 하루도 좋아유.\n무슨 일이 있었는지 들려줘유.”', '“재미난 얘기\n한 보따리 풀어볼까유?”', '“천천히 말씀하셔유.\n이야기는 서두를 것 없지유.”']},
+  boksoon: {name: '복순 할머니', description: '살가운 전라도 이웃', title: '정겨운 친구 복순 할머니', file: '05-boksoon.png', width: 1024, height: 1536, greeting: '“어서 오세요잉. 오늘은 어찌 지내셨어요?”', quotes: ['“오늘 무슨 일 있으셨어요?\n편하게 들려줘요잉.”', '“이야기 나누면 더 재밌지라.\n우리 하나씩 꺼내볼까요?”', '“천천히 말씀하셔도 괜찮아요잉.\n여기서 듣고 있을게요.”']},
+  deoksu: {name: '덕수 할아버지', description: '느긋한 경상도 이야기꾼', title: '푸근한 친구 덕수 할아버지', file: '06-deoksu.png', width: 1024, height: 1536, greeting: '“어서 오이소. 오늘 하루는 어땠습니꺼?”', quotes: ['“그 이야기 참 좋네예.\n조금 더 들려주이소.”', '“같이 웃으면 더 좋지예.\n재미난 이야기 하나 해드릴까예?”', '“급할 거 있습니꺼.\n천천히 말씀해 주이소.”']}
 };
 let activeCharacter = 'hodam';
 if ('IntersectionObserver' in window) {
@@ -26,7 +26,7 @@ const scenes = [
   {name: 'voice', label: '말로 건네는 첫마디', highlight: 'mic', mode: 'talk'},
   {name: 'character', label: '마음이 가는 친구와 함께', highlight: 'character', mode: 'talk'},
   {name: 'presets', label: '오늘은 어떤 이야기를 해볼까요?', highlight: 'presets', mode: 'word'},
-  {name: 'read', label: '큰 글씨로, 쉽고 편하게', highlight: 'response', mode: 'talk'}
+  {name: 'read', label: '큰 글씨로 쉽고 편하게', highlight: 'response', mode: 'talk'}
 ];
 const steps = $$('.story-step');
 const sceneButtons = $$('[data-scene-select]');
@@ -51,9 +51,6 @@ function setScene(index, force = false) {
   } else {
     quote.textContent = character.quotes[0];
   }
-  $('#phone-companion-name').textContent = `${character.name}와 함께`;
-  $('#phone-response-label').textContent = `${character.name}의 대답`;
-  $('#phone-character-caption').textContent = `${character.name} · ${character.description}`;
   quote.classList.remove('scene-enter');
   requestAnimationFrame(() => quote.classList.add('scene-enter'));
   sceneButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
@@ -67,9 +64,8 @@ function selectCharacter(key, announce = false) {
     image.src = `assets/character-candidates/${character.file}`;
     image.width = character.width;
     image.height = character.height;
-    image.alt = image.dataset.companionImage === 'decorative' ? '' : `${character.description}, ${character.name}`;
+    image.alt = image.dataset.companionImage === 'decorative' ? '' : `${character.description} ${character.name}`;
   });
-  $('#friend-greeting-label').textContent = `${character.name}의 반가운 첫인사`;
   $('#friend-greeting').textContent = character.greeting;
   $('#friend-description').textContent = character.description;
   $('#friend-name').textContent = character.title;
