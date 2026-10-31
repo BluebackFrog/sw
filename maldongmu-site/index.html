@@ -43,6 +43,7 @@
 </head>
 <body data-character="hodam">
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="icon-brand" viewBox="0 0 40 40"><path d="M35 19a15 15 0 0 1-15 15H6l2.1-5A15 15 0 1 1 35 19Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="14.2" cy="18.4" r="3.8"/><circle cx="25.4" cy="18.4" r="3.8"/><path d="M18 18.1q1.8-1.4 3.6 0M10.4 17.5l-2.2-.8m21 .8 2.1-.8M15 10.5q2.4-2.3 4.8-.4 2.2-2.1 4.6 0"/></g><path d="M15.8 26q4 3.3 8 0" fill="none" stroke="#9a593a" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="icon-mic" viewBox="0 0 32 40"><rect x="10" y="2" width="12" height="22" rx="6" fill="currentColor"/><path d="M4 18v3a12 12 0 0 0 24 0v-3M16 33v5M10 38h12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
     <symbol id="icon-sound" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H4l1.5-4A8 8 0 1 1 20 11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
@@ -50,7 +51,7 @@
   </defs></svg>
   <a class="skip" href="#intro">본문으로 건너뛰기</a>
   <header class="header">
-    <a class="brand" href="#home" aria-label="말동무챗 처음으로"><svg aria-hidden="true"><use href="#icon-chat"/></svg>말동무<span>챗</span></a>
+    <a class="brand" href="#home" aria-label="말동무챗 처음으로"><svg aria-hidden="true"><use href="#icon-brand"/></svg>말동무<span>챗</span></a>
     <nav aria-label="주 메뉴"><a href="#intro">우리의 마음</a><a href="#companions">말동무 친구들</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a></nav>
     <button class="nav-cta" data-interest="header">말동무챗 만나보기 <span aria-hidden="true">↗</span></button>
     <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
@@ -182,7 +183,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer wrap"><a class="brand" href="#home"><svg aria-hidden="true"><use href="#icon-chat"/></svg>말동무<span>챗</span></a><p>준비 중인 서비스를 소개하는 페이지입니다.</p><a class="back-top" href="#home" aria-label="맨 위로">↑</a></footer>
+  <footer class="footer wrap"><a class="brand" href="#home"><svg aria-hidden="true"><use href="#icon-brand"/></svg>말동무<span>챗</span></a><div class="footer-notes"><p>준비 중인 서비스를 소개하는 페이지입니다.</p><p class="font-credit">손글씨는 <a href="https://www.chilgok.go.kr/portal/contents.do?mId=0404070100" target="_blank" rel="noopener noreferrer">칠곡군의 칠곡할매 김영분체</a>를 사용했습니다.</p></div><a class="back-top" href="#home" aria-label="맨 위로">↑</a></footer>
   <dialog class="interest-dialog" id="interest-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><button class="dialog-close" aria-label="안내 닫기" data-close-dialog>×</button><img data-companion-image="decorative" src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536"><span class="eyebrow">찾아와 주셔서 반가워요</span><h2 id="dialog-title">말동무챗은<br><span>지금 준비 중이에요.</span></h2><p id="dialog-description">가족을 떠올리며 찾아와 주셔서 감사해요.<br>더 편안한 말동무로 만날 수 있도록<br>차근차근 준비하고 있어요.</p><button class="pill primary" data-close-dialog autofocus>알겠어요</button><a class="quiet-link" href="#class-form" data-close-dialog>출시 소식 받기</a><small>소개된 모습과 내용은 출시 과정에서 달라질 수 있어요.</small></dialog>
   <!-- [수업 원문] Pop up: 폼 저장 성공 후 표시할 내용입니다. -->
   <div id="popup" style="display:none;">

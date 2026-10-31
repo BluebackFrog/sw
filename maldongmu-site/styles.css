@@ -1,4 +1,5 @@
 @font-face{font-family:Pretendard;src:url('assets/pretendard.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Chilgok KimYeongBun';src:url('assets/fonts/Chilgok_kyb.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
 :root{--green:#49654d;--deep:#304a37;--cream:#fcf8f0;--paper:#fffcf7;--ink:#303c30;--muted:#6b7364;--line:#dadbca;--accent:#9a593a;--ease:cubic-bezier(.215,.61,.355,1);--page-progress:0}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:115px}body{margin:0;background:var(--cream);color:var(--ink);font-family:Pretendard,'Malgun Gothic',system-ui,sans-serif;word-break:keep-all;-webkit-font-smoothing:antialiased}h1,h2,h3,p{margin:0}h1,h2,h3{font-weight:650;letter-spacing:-.045em}h2{font-size:clamp(32px,4vw,50px);line-height:1.4}h2 span{color:#78816b}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0}button,a,summary{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:5px}svg{width:24px;height:24px;flex-shrink:0}img{display:block;max-width:100%;height:auto}em{font-style:normal}.icon-library{position:absolute;width:0;height:0;overflow:hidden}.wrap{width:min(1240px,calc(100% - 112px));margin-inline:auto}.section{padding:110px 0}.eyebrow{font-size:15px;font-weight:550;letter-spacing:.01em}.section-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:50px}.section-top svg{color:var(--accent)}.skip{position:fixed;top:10px;left:20px;z-index:200;background:var(--paper);padding:16px;transform:translateY(-200%)}.skip:focus{transform:none}::selection{background:#dce6c6;color:var(--deep)}
 
@@ -494,4 +495,34 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
 @media (max-width: 799px) and (max-height: 700px) {
   .device-stage { height: 320px; --phone-scale: .46; }
   .device-caption { top: 12px; font-size: 12px; }
+}
+
+/* 손글씨는 가족을 떠올리는 짧은 문장에만 사용합니다. */
+.brand { font-weight: 750; letter-spacing: -.045em; }
+.brand svg { width: 40px; height: 40px; margin-right: 8px; }
+.intro-copy h2 > span,
+.intro .thought:not(.thought-last),
+.invitation h2 {
+  font-family: 'Chilgok KimYeongBun', Pretendard, 'Malgun Gothic', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+.intro-copy h2 > span { font-size: 1.18em; color: #626e55; }
+.intro .thought:not(.thought-last) {
+  font-size: clamp(25px, 2.2vw, 29px);
+  line-height: 1.45;
+  color: #58634f;
+}
+.intro .thought > span { top: 15px; font-size: 30px; }
+.invitation h2 { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.5; }
+.footer-notes { flex: 1; min-width: 0; }
+.footer .font-credit { font-size: 12px; line-height: 1.7; margin-top: 5px; }
+.font-credit a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 799px) {
+  .brand svg { width: 36px; height: 36px; margin-right: 7px; }
+  .intro .thought:not(.thought-last) { font-size: 28px; }
+  .invitation h2 { font-size: clamp(30px, 7.6vw, 42px); }
+  .footer-notes { flex-basis: 100%; order: 3; }
 }
