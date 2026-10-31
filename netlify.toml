@@ -1,0 +1,3 @@
+[build]
+  # 별도 빌드 없이 이 폴더의 HTML과 정적 파일을 배포합니다.
+  publish = "maldongmu-site"

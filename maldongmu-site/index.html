@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#49654d">
+  <meta name="description" content="부모님이 혼자 계시는 게 마음에 걸리시나요? 부모님과 할머니·할아버지의 일상에 다정한 이야기를 더하는 AI 말동무, 말동무챗.">
+  <title>말동무챗 — 사랑하는 가족의 하루에, 다정한 말동무</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- [Codex 연결] 수업 원문의 라이브러리를 교수님 설명대로 head에서 불러옵니다. -->
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/dinoqqq/simple-popup@master/dist/jquery.simple-popup.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/gh/dinoqqq/simple-popup@master/dist/jquery.simple-popup.min.css" rel="stylesheet" type="text/css">
+  <!-- [수업 원문] Get User IP: 조회 실패 값도 원문의 "null" / 'unknown'을 유지합니다. -->
+  <script type="application/javascript">
+    var ip = "null";
+    function getIP(json) {
+        console.log(json);
+        try {
+            ip = json.ip;
+        } catch (e) {
+            ip = 'unknown';
+        }
+        return;
+    }
+  </script>
+  <script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
+  <!-- [Codex 연결] 수업 폼 CSS의 적용 범위만 제한해 기존 캐릭터 버튼을 보존합니다. -->
+  <style>
+    #class-form input, #class-form textarea, #class-form button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333;
+    }
+  </style>
+  <script src="app.js" defer></script>
+</head>
+<body data-character="hodam">
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H4l1.5-4A8 8 0 1 1 20 11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20S3 15 3 8.5a4.5 4.5 0 0 1 9-1 4.5 4.5 0 0 1 9 1C21 15 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </defs></svg>
+  <a class="skip" href="#intro">본문으로 건너뛰기</a>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="말동무챗 처음으로"><svg aria-hidden="true"><use href="#icon-chat"/></svg>말동무<span>챗</span></a>
+    <nav aria-label="주 메뉴"><a href="#intro">우리의 마음</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a></nav>
+    <button class="nav-cta" data-interest="header">말동무챗 만나보기 <span aria-hidden="true">↗</span></button>
+    <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <div class="progress" aria-hidden="true"></div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="모바일 메뉴" hidden><a href="#intro">우리의 마음</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a><button data-interest="mobile">말동무챗 만나보기 ↗</button></nav>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-grid wrap">
+        <div class="hero-copy">
+          <p class="eyebrow hero-enter"><span class="seed-dot"></span> 부모님에게도, 할머니·할아버지에게도</p>
+          <h1 id="hero-title" class="hero-enter">부모님이<br>혼자 계시는 게<br><span>마음에 걸리시나요?</span></h1>
+          <p class="hero-description hero-enter">전화 한 통으로는 다 채우지 못한 하루.<br>그 곁에, 편히 말을 건넬 친구가 있다면요.</p>
+          <div class="hero-actions hero-enter"><button class="pill primary" data-interest="hero">우리 가족에게 소개하기 <span aria-hidden="true">→</span></button><a class="quiet-link" href="#moments">어떤 말동무인가요? ↓</a></div>
+          <p class="hero-foot hero-enter">가족을 생각하는 마음에서 시작한 AI 말동무</p>
+        </div>
+        <div class="hero-showcase">
+        <div class="hero-art">
+          <div class="sun-disc" aria-hidden="true"></div><span class="leaf leaf-one" aria-hidden="true"></span><span class="leaf leaf-two" aria-hidden="true"></span>
+          <div class="hero-greeting" data-parallax="0.025"><span id="friend-greeting-label">호담이의 다정한 첫인사</span><strong id="friend-greeting">“어흥! 오늘 하루 어땠어요?”</strong><svg aria-hidden="true"><use href="#icon-chat"/></svg></div>
+          <div class="hero-person" data-parallax="-0.025"><img data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" fetchpriority="high"></div>
+          <div class="character-tag"><svg aria-hidden="true"><use href="#icon-heart"/></svg><div><small id="friend-description">민화 속 순한 호랑이</small><strong id="friend-name">수다 친구, 호담이</strong></div></div>
+        </div>
+        <div class="friend-picker" role="group" aria-labelledby="friend-picker-title">
+          <p id="friend-picker-title">마음이 가는 친구를 골라보세요.</p>
+          <div class="friend-options">
+            <button data-character-select="boksil" aria-label="복실이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/01-boksil.png" alt="" width="1199" height="1312"><span>복실이</span><small>강아지</small></button>
+            <button data-character-select="hodam" aria-label="호담이 캐릭터 보기" aria-pressed="true"><img src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536"><span>호담이</span><small>호랑이</small></button>
+            <button data-character-select="dodam" aria-label="도담이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/03-dodam.png" alt="" width="1222" height="1287"><span>도담이</span><small>도깨비</small></button>
+            <button data-character-select="boksoon" aria-label="복순 할머니 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/05-boksoon.png" alt="" width="1024" height="1536"><span>복순</span><small>할머니</small></button>
+            <button data-character-select="deoksu" aria-label="덕수 할아버지 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/06-deoksu.png" alt="" width="1024" height="1536"><span>덕수</span><small>할아버지</small></button>
+          </div>
+          <span class="sr-only" id="character-announcement" role="status"></span>
+        </div>
+        </div>
+      </div>
+      <div class="hero-bottom wrap"><span>멀리 있어도, 마음은 늘 가까이.</span><a href="#intro">우리의 이야기를 만나보세요 <span aria-hidden="true">↓</span></a><span class="preview-label">부모님을 위한 AI 말동무</span></div>
+    </section>
+
+    <section class="intro section" id="intro" aria-labelledby="intro-title">
+      <div class="wrap">
+        <div class="section-top reveal"><span class="eyebrow">사랑하는 가족이 떠오르는 순간</span><svg aria-hidden="true"><use href="#icon-heart"/></svg></div>
+        <div class="intro-grid">
+          <div class="intro-copy reveal"><h2 id="intro-title">통화를 끊고 나서도,<br><span>괜히 마음이 쓰이는 날.</span></h2><p>자주 찾아뵙고 싶지만,<br>마음처럼 쉽지 않으니까.</p><p>가족의 안부 사이사이,<br>가볍게 말을 건넬 친구를 생각했어요.</p></div>
+          <div class="thoughts"><p class="thought reveal"><span aria-hidden="true">“</span>오늘은 누구와<br>이야기하셨을까.</p><p class="thought reveal"><span aria-hidden="true">“</span>별일 없다 하셔도,<br>조금 적적하진 않으실까.</p><p class="thought thought-last reveal">부모님도, 할머니·할아버지도.<br><strong>오늘 하루가 조금 더 다정했으면.</strong></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="moments" id="moments" aria-labelledby="moments-title">
+      <div class="wrap moments-intro reveal"><span class="eyebrow">말동무챗이 함께하고 싶은 일상</span><h2 id="moments-title">그 하루에,<br><span>이야기할 친구가 있다면.</span></h2></div>
+      <div class="story-layout wrap">
+        <div class="portrait-column">
+          <div class="portrait-stage" data-scene="daily">
+            <span class="scene-kicker" id="scene-kicker">작은 이야기도 반갑게</span>
+            <div class="scene-quote" id="scene-quote">“오늘 산책은 어떠셨어요?<br>그 이야기가 궁금해요.”</div>
+            <div class="portrait-arch" aria-hidden="true"></div>
+            <img class="portrait-person" data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" loading="lazy">
+            <div class="scene-indicators" aria-label="함께할 일상 선택"><button data-scene-select="0" aria-label="일상을 나누는 친구" aria-pressed="true">01</button><button data-scene-select="1" aria-label="웃음을 나누는 친구" aria-pressed="false">02</button><button data-scene-select="2" aria-label="편안하게 이야기하는 친구" aria-pressed="false">03</button></div>
+            <span class="scene-note">말동무챗과 함께할 순간을 그려봤어요</span>
+          </div>
+        </div>
+        <div class="stories">
+          <article class="story-step" data-step="0"><div class="story-copy reveal"><span class="story-number">01 / 이야기를 나누고</span><h3>별일 없는 하루도,<br><em>이야기가 되도록.</em></h3><p>오늘 본 풍경, 오래된 추억.<br>작은 이야기에도 귀 기울이는<br>다정한 AI 말동무.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="1"><div class="story-copy reveal"><span class="story-number">02 / 함께 웃고</span><h3>심심한 오후에는,<br><em>한 번 더 웃을 수 있게.</em></h3><p>가벼운 농담도, 소소한 말놀이도.<br>부담 없이 함께하는<br>일상 속 작은 즐거움.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="2"><div class="story-copy reveal"><span class="story-number">03 / 편안하게 가까워지고</span><h3>낯선 기술이어도,<br><em>이야기는 편안하게.</em></h3><p>어렵게 배우지 않아도 괜찮도록.<br>익숙한 대화에 가까운 모습을<br>준비하고 있어요.</p><span class="story-line" aria-hidden="true"></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="invitation section" id="invitation" aria-labelledby="invitation-title"><div class="wrap invitation-inner reveal"><span class="eyebrow">우리가 바라는 건, 다정한 하루</span><h2 id="invitation-title">“오늘은 이런 이야기를 했어.”</h2><p>다음 통화에는 부모님의 이야기가<br>하나 더 늘어 있기를.</p><div class="friends-lineup" aria-label="말동무챗의 다섯 친구"><img src="assets/character-candidates/01-boksil.png" alt="복실이" width="1199" height="1312" loading="lazy"><img src="assets/character-candidates/05-boksoon.png" alt="복순 할머니" width="1024" height="1536" loading="lazy"><img src="assets/character-candidates/02-hodam.png" alt="호담이" width="1024" height="1536" loading="lazy"><img src="assets/character-candidates/06-deoksu.png" alt="덕수 할아버지" width="1024" height="1536" loading="lazy"><img src="assets/character-candidates/03-dodam.png" alt="도담이" width="1222" height="1287" loading="lazy"></div><div class="invitation-sign"><span></span> 말동무챗 <span></span></div></div></section>
+    <section class="questions section" id="questions" aria-labelledby="questions-title"><div class="wrap faq-grid"><div class="reveal"><span class="eyebrow">궁금한 점</span><h2 id="questions-title">조금만 더<br>알려드릴게요.</h2></div><div class="faq-list reveal"><details><summary>누구를 위한 말동무인가요?<span aria-hidden="true">+</span></summary><p>부모님과 할머니·할아버지처럼, 일상에서 편히 이야기할 친구가 필요한 분들을 생각하며 준비하고 있어요.</p></details><details><summary>지금 이용할 수 있나요?<span aria-hidden="true">+</span></summary><p>아직 준비 중이에요. 이곳에서는 말동무챗이 함께하고 싶은 일상을 먼저 소개해요.</p></details><details><summary>소개된 모습 그대로 만나게 되나요?<span aria-hidden="true">+</span></summary><p>더 편안하게 쓰실 수 있도록 다듬고 있어요. 캐릭터와 서비스 내용은 출시 과정에서 달라질 수 있어요.</p></details></div></div></section>
+    <section class="closing"><div class="wrap"><div class="closing-copy reveal"><span class="eyebrow">사랑하는 가족이 떠오르셨다면</span><h2>그 하루에,<br>다정한 말동무를 더해주세요.</h2><button class="pill light" data-interest="closing">우리 가족에게 소개하기 <span aria-hidden="true">→</span></button></div><img class="closing-person" data-companion-image="decorative" src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536" loading="lazy"></div></section>
+    <!-- [Codex 연결] Form 만들기 원문의 center·입력창 ID·버튼 click 방식을 유지합니다. -->
+    <section class="section class-form" id="class-form" aria-label="말동무챗 출시 소식 신청">
+      <div class="wrap">
+        <center>
+            <p>이메일을 남겨주시면 서비스가 런칭되었을 때 알림을 드리겠습니다. </p>
+            <input id="submit-email" type="email" placeholder="알림을 받으실 이메일" /> <br><br>
+            <p>서비스가 이렇게 되었으면 좋겠다는 조언을 해 주세요 </p>
+            <textarea id="submit-advice" name="Text1" cols="40" rows="5" placeholder="서비스에 대한 조언을 남겨주세요"></textarea><br>
+            <button style="width:350px;" id="submit">지금 제출! </button>
+        </center>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#home"><svg aria-hidden="true"><use href="#icon-chat"/></svg>말동무<span>챗</span></a><p>준비 중인 서비스를 소개하는 페이지입니다.</p><a class="back-top" href="#home" aria-label="맨 위로">↑</a></footer>
+  <dialog class="interest-dialog" id="interest-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><button class="dialog-close" aria-label="안내 닫기" data-close-dialog>×</button><img data-companion-image="decorative" src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536"><span class="eyebrow">찾아와 주셔서 반가워요</span><h2 id="dialog-title">말동무챗은<br><span>지금 준비 중이에요.</span></h2><p id="dialog-description">가족을 떠올리며 찾아와 주셔서 감사해요.<br>더 편안한 말동무로 만날 수 있도록<br>차근차근 준비하고 있어요.</p><button class="pill primary" data-close-dialog autofocus>알겠어요</button><a class="quiet-link" href="#class-form" data-close-dialog>출시 소식 받기</a><small>소개된 모습과 내용은 출시 과정에서 달라질 수 있어요.</small></dialog>
+  <!-- [수업 원문] Pop up: 폼 저장 성공 후 표시할 내용입니다. -->
+  <div id="popup" style="display:none;">
+    <h1>감사합니다. </h1>
+    <p>이제는 우리는 같은 배를 탔습니다.  </p>
+  </div>
+  <noscript><p class="noscript-note">말동무챗은 현재 준비 중입니다. 소개된 모습과 내용은 출시 과정에서 달라질 수 있어요.</p></noscript>
+
+  <!-- [Codex 연결 시작] 출처: https://class.handsomeys.com/codes.html
+       함수·변수·조건식은 수업 원문을 유지했습니다. 연결을 위해 바꾼 곳만 Codex 주석을 붙였습니다.
+       $.ajax 예제는 제외하고, 단계별로 반복된 방문 전송 예제는 최종 data로 한 번만 실행합니다. -->
+  <script>
+// [수업 원문] Cookie 다루기
+// 쿠키에서 값을 가져오는 함수
+function getCookieValue(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) {
+        return parts.pop().split(";").shift();
+    }
+}
+
+// 쿠키에 값을 저장하는 함수
+function setCookieValue(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getUVfromCookie() {
+    // 6자리 임의의 문자열 생성
+    const hash = Math.random().toString(36).substring(2, 8).toUpperCase();
+    // 쿠키에서 기존 해시 값을 가져옴
+    const existingHash = getCookieValue("user");
+    // 기존 해시 값이 없으면, 새로운 해시 값을 쿠키에 저장
+    if (!existingHash) {
+        setCookieValue("user", hash, 180); // 쿠키 만료일은 6개월 
+        return hash;
+    } else {
+        // 기존 해시 값이 있으면, 기존 값을 반환
+        return existingHash;
+    }
+}
+
+/* 수정 payload data -> id:getUVfromCookie() */
+
+// [수업 원문] Time Stamp
+// Sam pading value to start with 0. eg: 01, 02, .. 09, 10, ..
+function padValue(value) {
+    return (value < 10) ? "0" + value : value;
+}
+
+function getTimeStamp() {
+    const date = new Date();
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    const formattedDate = `${padValue(year)}-${padValue(month)}-${padValue(day)} ${padValue(hours)}:${padValue(minutes)}:${padValue(seconds)}`;
+
+    return formattedDate;
+}
+
+// [수업 원문] UTM 가져오기
+var queryString = location.search;
+const urlParams = new URLSearchParams(queryString);
+const utm = urlParams.get("utm")
+
+// [수업 원문] Device 가져오기
+var mobile = 'desktop';
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // true for mobile device
+    mobile = 'mobile';
+}
+
+$(document).ready(function () {
+    console.log("Document Ready");
+
+    // [Codex 연결] 수업 예제 주소만 기존 실습에서 사용한 본인의 배포 주소로 바꿉니다.
+    var addrScript = 'https://script.google.com/macros/s/AKfycbwKyA5uqY8L8gRc1wyxK_ihrfXGmX7XHKsyJ4XN3nOsk0bEhiQt8Qr6vI5Jb1ASrNwYAA/exec';
+
+    // [수업 원문] 최종 data: 쿠키 ID·주소·IP·유입 경로·시각·UTM·기기
+    /* data를 만들 땐 모든 field가 들어 있어야 함 */
+    var data = JSON.stringify({"id": getUVfromCookie(),
+                "landingUrl":window.location.href,
+                "ip":ip,
+                "referer":document.referrer,
+                "time_stamp":getTimeStamp(),
+                "utm":utm,
+                "device":mobile}
+                );
+
+    // [Codex 연결] 실제 시트 이름 visitors를 사용하고, URL로 전달할 data만 인코딩합니다.
+    axios.get(addrScript+'?action=insert&table=visitors&data='+encodeURIComponent(data))
+        .then(response => {
+            console.log(JSON.stringify(response));
+        })
+        .catch(error => {
+            if (error.response) {
+                // 서버가 2xx 범위를 벗어난 상태 코드로 응답한 경우
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                // 요청이 전송되었지만 응답을 받지 못한 경우
+                console.log(error.request);
+            } else {
+                // 요청 설정 중에 오류가 발생한 경우
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        });
+
+    // [수업 원문 + 연결 표시] 버튼 클릭시 정보 전송
+    $("#submit").on("click", function () {
+        const email = $("#submit-email").val();
+        const advice = $("#submit-advice").val();
+
+        function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        }
+
+        if (email == '' || !validateEmail(email)) {
+            alert("이메일이 유효하지 않아 알림을 드릴 수가 없습니다. ");
+            return;
+        }
+
+        var finalData = JSON.stringify({
+            "id": getUVfromCookie(),
+            "email": email,
+            "advice": advice
+        })
+
+        // [Codex 연결] 수업의 Busy를 전송 시작·종료에 연결합니다.
+        $.busyLoadFull("show");
+        // [Codex 연결] 본인 주소 사용. &·+·#·줄바꿈이 데이터에서 깨지지 않도록 인코딩합니다.
+        axios.get(addrScript+'?action=insert&table=tab_final&data=' + encodeURIComponent(finalData))
+            .then(response => {
+                $.busyLoadFull("hide");
+                // [Codex 연결] 서버가 저장 성공을 확인한 경우에만 입력을 비우고 팝업을 엽니다.
+                // 2026-10-31: Apps Script doGet의 response().json(ret)를 배포 버전 2에 적용했습니다.
+                if (response.data.success !== true) {
+                    alert("저장 결과를 확인하지 못했습니다. 스프레드시트와 Apps Script 응답을 확인해 주세요.");
+                    return;
+                }
+                console.log(response.data.data);
+                alert(JSON.stringify(response));
+                $('#submit-email').val('');
+                $('#submit-advice').val('');
+                $.fn.simplePopup({ type: "html", htmlSelector: "#popup" });
+            })
+            .catch(error => {
+                // [Codex 연결] 전송 오류 때 로딩을 닫고, 입력 내용은 그대로 둡니다.
+                $.busyLoadFull("hide");
+                console.log(error);
+                alert("제출 결과를 확인하지 못했습니다. 입력 내용은 남아 있으니 스프레드시트를 확인해 주세요.");
+            });
+    });
+});
+  </script>
+  <!-- [Codex 연결 끝] -->
+</body>
+</html>

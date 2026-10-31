@@ -1,0 +1,8 @@
+.DS_Store
+
+# 수업 원본, 서버 백업, 실제 검증 기록은 로컬에 보관합니다.
+/class-reference/
+/검증 결과_*.txt
+/maldongmu-site/안내.txt
+/maldongmu-site/로컬 저장 안내.txt
+/maldongmu-site/수업 코드 적용 안내.txt
