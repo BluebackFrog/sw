@@ -1,0 +1,44 @@
+Created: 2026-11-01
+Method: built-in ImageGen (image_gen.imagegen), identity-preserving edits.
+Final assets (replaced at the user's request):
+- maldongmu-site/assets/grandparents-watercolor-wide.png
+- maldongmu-site/assets/grandfather-tv-watercolor.png
+
+The first painting establishes the grandfather's identity and clothing for both scenes.
+The solitary TV scene retains its restrained lonely mood and gets a wider painted room.
+The site keeps the image on the left and copy on the right, enlarges the illustration at
+desktop widths, and blends the extended room into the page with a gradual edge mask.
+
+Prompt 1: couple painting / clothing edit
+Use case: identity-preserve and precise-object-edit.
+Asset type: existing watercolor hero illustration for a Korean family companionship website.
+Input image 1 is the EDIT TARGET.
+
+Change ONLY the grandfather's clothing. Replace his cream knitted sweater entirely with a comfortable long-sleeved, button-front CHECK SHIRT, with a soft collar and clearly recognizable medium-scale woven checks in muted sage-green, warm ivory and a little earthy brown. Do not leave a sweater or sweater vest over the shirt. Replace his gray trousers with plain warm khaki-beige COTTON CHINOS, with soft cotton folds and no denim texture. Keep his trousers clearly distinct from the pale sofa. Use the same naturally painted watercolor medium for the clothing.
+
+Critical invariants: preserve this exact elderly Korean grandfather's facial identity, very old age, mostly white hair, receding hairline, face shape, smile, gaze toward the phone, seated position and his hand resting on his thigh. Both legs remain uncrossed, side by side. Preserve the grandmother exactly: face, hair, sage cardigan, seated pose, hands and the open dark-brown folio wallet phone case. Preserve the phone case's construction and viewing direction. Preserve the spacious horizontal living-room background, sofa, plants, window, paper texture, broad gentle watercolor edges and warm daylight.
+
+Retain the existing landscape 4:3 composition and framing. True translucent handmade watercolor, economical painted facial features, soft pigment blooms and textured warm ivory paper. No photorealistic skin, no anime, no vector style, no new people or objects, no text, no logos, no watermark. Output just the complete edited painting.
+
+Prompt 2: TV painting / identity and clothing match
+Use case: identity-preserve and compositing.
+Asset type: second watercolor illustration on the same Korean companionship website.
+Input images: Image 1 is the EDIT TARGET, the existing solitary grandfather watching television scene. Image 2 is the DEFINITIVE CHARACTER, CLOTHING AND WATERCOLOR REFERENCE, showing an elderly couple sharing a phone. Only the grandfather from Image 2 belongs in the edited scene.
+
+Replace the grandfather in Image 1 with the EXACT SAME elderly Korean grandfather seen in Image 2: same very old age (late seventies to eighties), predominantly white softly swept hair with a receding hairline, same facial structure, brow, nose, ears, aged cheeks and gentle features. He should be recognizably the same person in another moment. Match his outfit exactly to Image 2: long-sleeved button-front check shirt in muted sage, warm ivory and earthy brown, with a soft collar; plain warm khaki-beige cotton chinos. No cream knit sweater, no cardigan, no denim. Preserve the natural watercolor handling of face and clothes.
+
+This remains the quiet ALONE WATCHING TV scene. Do not copy the couple's smiling expression or add the grandmother or phone. The man sits on the sofa, both feet down, legs naturally separate and uncrossed, hands loosely resting in his lap or on his thighs. Slightly settled shoulders, closed neutral mouth and a contemplative tired gaze toward the TV convey subtle loneliness. Not smiling, not crying or dramatically sad, no head in hands. His face and upper body must remain readable. In the foreground we see the BACK of the dark gray television, its screen facing the grandfather away from us. Keep the television low and left so it does not obscure his face or torso.
+
+Expand the surrounding living room and pull the camera back about 15–20 percent: more continuous sofa and a generous area of empty sofa beside him, more softly painted wall, window and curtains, modest plants and side table, all consistent with the existing setting. Do not simply shrink the existing picture onto blank paper. Paint a broader, roomier background across the canvas, filling most of the image width. The grandfather remains a prominent central-right subject. The TV occupies the lower-left foreground, now about a third of the scene width rather than half. Avoid any extra people, new narrative props or overly busy decorations.
+
+Landscape 3:2 composition. Slightly dim late-afternoon room, soft muted gray-green background, small warm lamp glow, clear gentle contrast; only a little darker than the happy first painting, not gloomy or black. Genuine loose transparent watercolor on warm ivory textured paper matching Image 2. Painted facial marks, no photographic skin, anime or vector outlines. Across the outer 12–18 percent, broad soft irregular watercolor washes gradually dissolve into warm ivory paper on all four sides, particularly left and right, for blending into a cream webpage. Keep the face, hands and knees within the readable painted area. No hard rectangle, no border, no text, no logos or watermark. Output one complete edited painting.
+
+Prompt 3: TV painting / final wider framing
+Use case: identity-preserve and precise-object-edit.
+Image 1 is the edit target, a watercolor of an elderly man in a sage-and-cream check shirt and khaki cotton trousers, watching TV alone. Image 2 is the identity reference for this same man in the happier couple scene.
+
+The current framing is still too tightly cropped. Make one decisive edit: PULL THE CAMERA BACK substantially and EXPAND THE PAINTED ROOM AROUND THE SUBJECTS. Show the current man-and-TV arrangement at about 70–75 percent of its current scale within a new landscape 3:2 canvas. Extend the actual painted room to both sides, above and below, rather than pasting the image onto a blank border. Show a wider run of sofa with visibly empty seats, more of the soft wall, window and curtains, existing lamp and plants, and a small area of floor. The TV's rear should occupy only about one third of the canvas width, and the man's head and torso should no longer dominate almost half the composition. The man remains easy to see at center-right, TV back lower-left with screen facing him. Preserve the camera's basic direction behind the TV. No extra people or new decorative objects.
+
+Preserve the elderly man's very old age, white receding hair, same face as the man in Image 2, check shirt, khaki cotton chinos, neutral quietly lonely expression and natural uncrossed seated legs and hands. Do not copy the smile, woman or phone from Image 2. Preserve the slightly dim muted late-afternoon mood.
+
+Render all extended background in precisely the same translucent handmade watercolor and warm ivory paper texture. Maintain loose painted face detail, not photographic. The painted living room should occupy most of the image area, with broad gentle irregular dissolving watercolor edges across only the outer 12–15 percent of the canvas, suitable for blending into an ivory webpage. No harsh rectangular frame, no text, no border, no watermark. Output only one complete wider-framed painting.

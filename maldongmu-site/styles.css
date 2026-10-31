@@ -133,20 +133,18 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   align-self: center;
   justify-self: center;
   width: 100%;
-  max-width: 540px;
+  max-width: 760px;
   margin: 0;
   mix-blend-mode: multiply;
 }
 .intro-scene > img {
+  --intro-fade-x: linear-gradient(to right, transparent, #0000001f 5%, #0000006b 10%, #000000c7 17%, #000 24%, #000 78%, #0000008c 87%, #0000001f 96%, transparent);
+  --intro-fade-y: linear-gradient(to bottom, transparent, #00000047 5%, #000000bf 10%, #000 16%, #000 80%, #00000073 90%, #00000024 96%, transparent);
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 2;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
-    linear-gradient(to bottom, transparent, #000 7%, #000 88%, transparent);
-  mask-image:
-    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
-    linear-gradient(to bottom, transparent, #000 7%, #000 88%, transparent);
+  -webkit-mask-image: var(--intro-fade-x), var(--intro-fade-y);
+  mask-image: var(--intro-fade-x), var(--intro-fade-y);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
@@ -166,6 +164,13 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   font-size: 15px;
   line-height: 1.75;
 }
+@media (min-width: 1200px) {
+  .intro > .wrap {
+    width: min(1440px, calc(100% - 72px));
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    column-gap: clamp(32px, 3vw, 44px);
+  }
+}
 @media (max-width: 799px) {
   .intro { padding-block: 60px; }
   .intro > .wrap { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
@@ -173,7 +178,7 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .intro-grid > .intro-copy { grid-column: 1; display: block; }
   .intro .intro-copy h2 { font-size: clamp(28px, 7.6vw, 32px); margin-bottom: 16px; }
   .intro .intro-copy > p + p { margin-top: 12px; }
-  .intro-scene { grid-column: 1; grid-row: 3; }
+  .intro-scene { grid-column: 1; grid-row: 3; max-width: 680px; }
   .intro-grid > .thoughts { grid-column: 1; grid-row: 4; grid-template-columns: 1fr; }
 }
 .companions {
