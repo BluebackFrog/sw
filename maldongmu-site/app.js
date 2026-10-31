@@ -23,15 +23,69 @@ if ('IntersectionObserver' in window) {
 }
 // 소개용 앱 화면만 전환합니다. 마지막 체험 데모와 음성·입력 기능은 복원하지 않습니다.
 const scenes = [
-  {name: 'voice', label: '말로 건네는 첫마디', highlight: 'mic', mode: 'talk'},
-  {name: 'character', label: '마음이 가는 친구와 함께', highlight: 'character', mode: 'talk'},
-  {name: 'presets', label: '오늘은 어떤 이야기를 해볼까요?', highlight: 'presets', mode: 'word'},
-  {name: 'read', label: '큰 글씨로 쉽고 편하게', highlight: 'response', mode: 'talk'}
+  {name: 'voice', label: '말로 건네는 첫마디', highlight: 'mic', mode: 'talk', pose: '이야기에 귀 기울이는 모습'},
+  {name: 'character', label: '마음이 가는 친구와 함께', highlight: 'character', mode: 'talk', pose: '반갑게 인사하는 모습'},
+  {name: 'presets', label: '오늘은 어떤 이야기를 해볼까요?', highlight: 'presets', mode: 'word', pose: '사과를 들고 끝말잇기를 제안하는 모습'},
+  {name: 'read', label: '큰 글씨로 쉽고 편하게', highlight: 'response', mode: 'talk', pose: '편안하게 이야기를 듣는 모습'}
 ];
+const characterSettings = {
+  boksil: '햇살 드는 마당',
+  hodam: '소나무 숲',
+  dodam: '숲속 정자',
+  boksoon: '아늑한 거실',
+  deoksu: '한옥 마루'
+};
 const steps = $$('.story-step');
 const sceneButtons = $$('[data-scene-select]');
 const stage = $('.device-stage');
+const sceneCharacter = $('#scene-character');
+const sceneArtworkCache = new Map();
+let artworkRequest = 0;
 let activeScene = -1;
+function loadSceneArtwork(key) {
+  if (sceneArtworkCache.has(key)) return sceneArtworkCache.get(key);
+  const entry = {image: new Image(), url: `assets/character-scenes/${key}.webp`, ready: false};
+  entry.image.decoding = 'async';
+  entry.image.src = entry.url;
+  entry.promise = entry.image.decode().then(() => {
+    entry.ready = true;
+    return true;
+  }).catch(() => {
+    sceneArtworkCache.delete(key);
+    return false;
+  });
+  sceneArtworkCache.set(key, entry);
+  return entry;
+}
+function setSceneArtwork(key, index) {
+  const request = ++artworkRequest;
+  const entry = loadSceneArtwork(key);
+  if (sceneCharacter.dataset.character !== key) {
+    sceneCharacter.dataset.artwork = 'loading';
+    sceneCharacter.style.backgroundImage = 'none';
+  }
+  sceneCharacter.dataset.character = key;
+  sceneCharacter.setAttribute('aria-label', `${characters[key].name} 캐릭터`);
+  const showArtwork = loaded => {
+    // 빠르게 캐릭터나 장면을 바꿔도 늦게 도착한 이전 그림을 표시하지 않습니다.
+    if (request !== artworkRequest) return;
+    if (!loaded) {
+      sceneCharacter.dataset.artwork = 'fallback';
+      return;
+    }
+    sceneCharacter.style.backgroundImage = `url("${entry.url}")`;
+    sceneCharacter.style.backgroundPosition = `${(index % 2) * 100}% ${Math.floor(index / 2) * 100}%`;
+    sceneCharacter.dataset.artwork = 'ready';
+    sceneCharacter.dataset.pose = scenes[index].name;
+    sceneCharacter.setAttribute('aria-label', `${characters[key].name}: ${characterSettings[key]}에서 ${scenes[index].pose}`);
+    sceneCharacter.getAnimations().forEach(animation => animation.cancel());
+    if (!reducedMotion.matches) {
+      sceneCharacter.animate([{opacity: .78}, {opacity: 1}], {duration: 240, easing: 'ease-out'});
+    }
+  };
+  if (entry.ready) showArtwork(true);
+  else entry.promise.then(showArtwork);
+}
 function setScene(index, force = false) {
   if ((!force && index === activeScene) || !scenes[index]) return;
   activeScene = index;
@@ -51,6 +105,7 @@ function setScene(index, force = false) {
   } else {
     quote.textContent = character.quotes[0];
   }
+  setSceneArtwork(activeCharacter, index);
   quote.classList.remove('scene-enter');
   requestAnimationFrame(() => quote.classList.add('scene-enter'));
   sceneButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
@@ -73,7 +128,12 @@ function selectCharacter(key, announce = false) {
   setScene(Math.max(0, activeScene), true);
   if (announce) $('#character-announcement').textContent = `${character.name}의 모습을 보고 있어요. ${character.greeting}`;
 }
-$$('[data-character-select]').forEach(button => button.addEventListener('click', () => selectCharacter(button.dataset.characterSelect, true)));
+$$('[data-character-select]').forEach(button => {
+  const key = button.dataset.characterSelect;
+  button.addEventListener('pointerenter', () => loadSceneArtwork(key));
+  button.addEventListener('focus', () => loadSceneArtwork(key));
+  button.addEventListener('click', () => selectCharacter(key, true));
+});
 selectCharacter(activeCharacter);
 function sceneAnchor() {
   // 모바일에서는 고정된 휴대폰 아래에 보이는 설명을 기준으로 장면을 고릅니다.

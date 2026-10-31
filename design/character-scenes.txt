@@ -1,0 +1,96 @@
+Created: 2026-11-01
+Method: built-in ImageGen (image_gen.imagegen), one 2x2 scene sheet per original character.
+Final assets: maldongmu-site/assets/character-scenes/{boksil,hodam,dodam,boksoon,deoksu}.webp
+Sources: existing originals in maldongmu-site/assets/character-candidates/ (unchanged).
+Frames: top-left listening; top-right greeting; bottom-left word game with an apple; bottom-right calmly listening.
+Generated PNGs are encoded as WebP for web delivery without changing composition or slicing frames.
+
+boksil
+Reference: maldongmu-site/assets/character-candidates/01-boksil.png
+Final prompt:
+Use case: identity-preserve and illustration-story.
+Asset type: a production-ready 2-by-2 scene sprite sheet for a tiny illustrated chat app preview.
+Input image 1: CHARACTER IDENTITY AND STYLE REFERENCE. Preserve this exact character, not the black/transparent surrounding area.
+Character: Boksil, the same cheerful small golden-brown and cream shaggy dog, floppy ears, curled fluffy tail, red neckerchief, rounded black nose and friendly dark eyes. Keep the red neckerchief and coat markings identical.
+Background in EVERY tile: a sunny Korean house courtyard: pale warm garden path, low wooden fence, a wooden porch, two small flower pots and soft green shrubs at the sides. Friendly morning light.
+Make ONE landscape 3:2 canvas divided into EXACTLY FOUR equal rectangular tiles, two columns by two rows. Each quadrant is one complete 3:2 landscape scene. Tiles touch directly at the exact horizontal and vertical midlines: NO gutters, borders, separators, outlines around panels, captions, numbers or labels. No title. No text anywhere.
+Every tile repeats the SAME room or setting with the same camera, lighting, furniture positions and palette. The only changes between the four tiles are the character's subtle pose and expression, plus the small apple in the third tile. Keep the character centered at the same scale and ground line in each tile, full body filling about 80–85 percent of tile height. Leave a clear margin around hair, ears, horn, tail, hands and feet, nothing cut off. Remain seated on the haunches. The gestures use a FRONT PAW, never human hands.
+Four tiles IN THIS EXACT ORDER:
+TOP LEFT / listening: a small interested tilt of the head and a friendly attentive smile, arms or paws relaxed; quietly listening to someone describe their day.
+TOP RIGHT / greeting: raise one hand or front paw in a small welcoming wave near shoulder height, a warm hello, no big exaggerated action.
+BOTTOM LEFT / suggesting a word game: a playful thinking expression and one hand or front paw gently presenting a small red apple beside the body, matching the line 'Shall we play word chain? I will start with apple.' Do not add writing.
+BOTTOM RIGHT / calmly listening: a reassuring softer closed-mouth smile, head gently inclined, both hands or front paws comfortably settled together in front or on the lap, patient unhurried posture.
+All four poses must be visibly distinct but restrained, with identical facial identity, clothing, accessories and body proportions across tiles. No giant motion effects, speech bubbles, symbols, floating hearts or stars.
+Art direction: match the reference's charming Korean storybook character with warm brown hand-drawn contours, gentle watercolor/colored-pencil paper texture and soft shaded colors. Paint the environment in the same medium. Keep the scenery lower contrast and slightly simpler than the character, with a readable full background in every tile rather than empty white space. Warm cream, sage, muted wood and ochre accents. No photorealism, no 3D, no flat vector replacement, no redesign. Opaque full scenery backgrounds, no transparency.
+
+hodam
+Reference: maldongmu-site/assets/character-candidates/02-hodam.png
+Final prompt:
+Use case: identity-preserve and illustration-story.
+Asset type: a production-ready 2-by-2 scene sprite sheet for a tiny illustrated chat app preview.
+Input image 1: CHARACTER IDENTITY AND STYLE REFERENCE. Preserve this exact character, not the black/transparent surrounding area.
+Character: Hodam, the same amiable Korean minhwa tiger, orange fur, dark expressive stripes, cream muzzle and belly, round eyes, curved tail and humorous eyebrows. Keep the stripe pattern, face and proportions consistent.
+Background in EVERY tile: a peaceful Korean minhwa-inspired pine grove: curved pine branches at the sides, softly layered green hills, a small flat rock and pale warm ground, quiet bright daylight.
+Make ONE landscape 3:2 canvas divided into EXACTLY FOUR equal rectangular tiles, two columns by two rows. Each quadrant is one complete 3:2 landscape scene. Tiles touch directly at the exact horizontal and vertical midlines: NO gutters, borders, separators, outlines around panels, captions, numbers or labels. No title. No text anywhere.
+Every tile repeats the SAME room or setting with the same camera, lighting, furniture positions and palette. The only changes between the four tiles are the character's subtle pose and expression, plus the small apple in the third tile. Keep the character centered at the same scale and ground line in each tile, full body filling about 80–85 percent of tile height. Leave a clear margin around hair, ears, horn, tail, hands and feet, nothing cut off. Remain seated on the haunches. The gestures use a FRONT PAW, never human hands.
+Four tiles IN THIS EXACT ORDER:
+TOP LEFT / listening: a small interested tilt of the head and a friendly attentive smile, arms or paws relaxed; quietly listening to someone describe their day.
+TOP RIGHT / greeting: raise one hand or front paw in a small welcoming wave near shoulder height, a warm hello, no big exaggerated action.
+BOTTOM LEFT / suggesting a word game: a playful thinking expression and one hand or front paw gently presenting a small red apple beside the body, matching the line 'Shall we play word chain? I will start with apple.' Do not add writing.
+BOTTOM RIGHT / calmly listening: a reassuring softer closed-mouth smile, head gently inclined, both hands or front paws comfortably settled together in front or on the lap, patient unhurried posture.
+All four poses must be visibly distinct but restrained, with identical facial identity, clothing, accessories and body proportions across tiles. No giant motion effects, speech bubbles, symbols, floating hearts or stars.
+Art direction: match the reference's charming Korean storybook character with warm brown hand-drawn contours, gentle watercolor/colored-pencil paper texture and soft shaded colors. Paint the environment in the same medium. Keep the scenery lower contrast and slightly simpler than the character, with a readable full background in every tile rather than empty white space. Warm cream, sage, muted wood and ochre accents. No photorealism, no 3D, no flat vector replacement, no redesign. Opaque full scenery backgrounds, no transparency.
+
+dodam
+Reference: maldongmu-site/assets/character-candidates/03-dodam.png
+Final prompt:
+Use case: identity-preserve and illustration-story.
+Asset type: a production-ready 2-by-2 scene sprite sheet for a tiny illustrated chat app preview.
+Input image 1: CHARACTER IDENTITY AND STYLE REFERENCE. Preserve this exact character, not the black/transparent surrounding area.
+Character: Dodam, the exact friendly Korean goblin: one small ivory horn above tousled dark brown hair, thick eyebrows, cheeky warm smile, cream traditional shirt, faded blue tied vest, patched loose beige trousers and dark cloth shoes. Keep all clothing and the single horn.
+Background in EVERY tile: a gentle Korean storybook forest pavilion: wooden pavilion posts framing the side edges, leafy green woodland in the distance, a warm wooden platform and a small smooth stone at the side. Soft afternoon light, no sinister mood.
+Make ONE landscape 3:2 canvas divided into EXACTLY FOUR equal rectangular tiles, two columns by two rows. Each quadrant is one complete 3:2 landscape scene. Tiles touch directly at the exact horizontal and vertical midlines: NO gutters, borders, separators, outlines around panels, captions, numbers or labels. No title. No text anywhere.
+Every tile repeats the SAME room or setting with the same camera, lighting, furniture positions and palette. The only changes between the four tiles are the character's subtle pose and expression, plus the small apple in the third tile. Keep the character centered at the same scale and ground line in each tile, full body filling about 80–85 percent of tile height. Leave a clear margin around hair, ears, horn, tail, hands and feet, nothing cut off. Remain sitting cross-legged, as in the reference. Move the hands and tilt the head only slightly; retain the sitting silhouette.
+Four tiles IN THIS EXACT ORDER:
+TOP LEFT / listening: a small interested tilt of the head and a friendly attentive smile, arms or paws relaxed; quietly listening to someone describe their day.
+TOP RIGHT / greeting: raise one hand or front paw in a small welcoming wave near shoulder height, a warm hello, no big exaggerated action.
+BOTTOM LEFT / suggesting a word game: a playful thinking expression and one hand or front paw gently presenting a small red apple beside the body, matching the line 'Shall we play word chain? I will start with apple.' Do not add writing.
+BOTTOM RIGHT / calmly listening: a reassuring softer closed-mouth smile, head gently inclined, both hands or front paws comfortably settled together in front or on the lap, patient unhurried posture.
+All four poses must be visibly distinct but restrained, with identical facial identity, clothing, accessories and body proportions across tiles. No giant motion effects, speech bubbles, symbols, floating hearts or stars.
+Art direction: match the reference's charming Korean storybook character with warm brown hand-drawn contours, gentle watercolor/colored-pencil paper texture and soft shaded colors. Paint the environment in the same medium. Keep the scenery lower contrast and slightly simpler than the character, with a readable full background in every tile rather than empty white space. Warm cream, sage, muted wood and ochre accents. No photorealism, no 3D, no flat vector replacement, no redesign. Opaque full scenery backgrounds, no transparency.
+
+boksoon
+Reference: maldongmu-site/assets/character-candidates/05-boksoon.png
+Final prompt:
+Use case: identity-preserve and illustration-story.
+Asset type: a production-ready 2-by-2 scene sprite sheet for a tiny illustrated chat app preview.
+Input image 1: CHARACTER IDENTITY AND STYLE REFERENCE. Preserve this exact character, not the black/transparent surrounding area.
+Character: Boksoon, the same Korean grandmother with short curly silver hair, round rosy cheeks, warm smiling eyes, burgundy floral vest over a cream floral long-sleeve blouse, loose brown trousers and mauve slip-on shoes. Preserve her face, hair and distinctive floral clothes.
+Background in EVERY tile: a modest cozy Korean living room: warm timber-framed window, a potted green plant at one side, a low wooden cabinet and softly suggested beige sofa in the back, pale warm floor. Gentle natural window light.
+Make ONE landscape 3:2 canvas divided into EXACTLY FOUR equal rectangular tiles, two columns by two rows. Each quadrant is one complete 3:2 landscape scene. Tiles touch directly at the exact horizontal and vertical midlines: NO gutters, borders, separators, outlines around panels, captions, numbers or labels. No title. No text anywhere.
+Every tile repeats the SAME room or setting with the same camera, lighting, furniture positions and palette. The only changes between the four tiles are the character's subtle pose and expression, plus the small apple in the third tile. Keep the character centered at the same scale and ground line in each tile, full body filling about 80–85 percent of tile height. Leave a clear margin around hair, ears, horn, tail, hands and feet, nothing cut off. Remain standing in a relaxed stance. Keep the same full-body height and feet placement; only small hand, head and shoulder changes.
+Four tiles IN THIS EXACT ORDER:
+TOP LEFT / listening: a small interested tilt of the head and a friendly attentive smile, arms or paws relaxed; quietly listening to someone describe their day.
+TOP RIGHT / greeting: raise one hand or front paw in a small welcoming wave near shoulder height, a warm hello, no big exaggerated action.
+BOTTOM LEFT / suggesting a word game: a playful thinking expression and one hand or front paw gently presenting a small red apple beside the body, matching the line 'Shall we play word chain? I will start with apple.' Do not add writing.
+BOTTOM RIGHT / calmly listening: a reassuring softer closed-mouth smile, head gently inclined, both hands or front paws comfortably settled together in front or on the lap, patient unhurried posture.
+All four poses must be visibly distinct but restrained, with identical facial identity, clothing, accessories and body proportions across tiles. No giant motion effects, speech bubbles, symbols, floating hearts or stars.
+Art direction: match the reference's charming Korean storybook character with warm brown hand-drawn contours, gentle watercolor/colored-pencil paper texture and soft shaded colors. Paint the environment in the same medium. Keep the scenery lower contrast and slightly simpler than the character, with a readable full background in every tile rather than empty white space. Warm cream, sage, muted wood and ochre accents. No photorealism, no 3D, no flat vector replacement, no redesign. Opaque full scenery backgrounds, no transparency.
+
+deoksu
+Reference: maldongmu-site/assets/character-candidates/06-deoksu.png
+Final prompt:
+Use case: identity-preserve and illustration-story.
+Asset type: a production-ready 2-by-2 scene sprite sheet for a tiny illustrated chat app preview.
+Input image 1: CHARACTER IDENTITY AND STYLE REFERENCE. Preserve this exact character, not the black/transparent surrounding area.
+Character: Deoksu, the same Korean grandfather with brushed-back silver hair, round wire glasses, rosy cheeks, broad friendly face, blue cardigan over an ivory shirt, loose brown trousers and brown shoes. Preserve his glasses, face, hair and clothes.
+Background in EVERY tile: a quiet Korean hanok wooden porch: warm wooden floorboards, a pale timber lattice door, a little stack of books at one side and a garden with a pot plant visible past the porch. Gentle late afternoon light.
+Make ONE landscape 3:2 canvas divided into EXACTLY FOUR equal rectangular tiles, two columns by two rows. Each quadrant is one complete 3:2 landscape scene. Tiles touch directly at the exact horizontal and vertical midlines: NO gutters, borders, separators, outlines around panels, captions, numbers or labels. No title. No text anywhere.
+Every tile repeats the SAME room or setting with the same camera, lighting, furniture positions and palette. The only changes between the four tiles are the character's subtle pose and expression, plus the small apple in the third tile. Keep the character centered at the same scale and ground line in each tile, full body filling about 80–85 percent of tile height. Leave a clear margin around hair, ears, horn, tail, hands and feet, nothing cut off. Remain standing in a relaxed stance. Keep the same full-body height and feet placement; only small hand, head and shoulder changes.
+Four tiles IN THIS EXACT ORDER:
+TOP LEFT / listening: a small interested tilt of the head and a friendly attentive smile, arms or paws relaxed; quietly listening to someone describe their day.
+TOP RIGHT / greeting: raise one hand or front paw in a small welcoming wave near shoulder height, a warm hello, no big exaggerated action.
+BOTTOM LEFT / suggesting a word game: a playful thinking expression and one hand or front paw gently presenting a small red apple beside the body, matching the line 'Shall we play word chain? I will start with apple.' Do not add writing.
+BOTTOM RIGHT / calmly listening: a reassuring softer closed-mouth smile, head gently inclined, both hands or front paws comfortably settled together in front or on the lap, patient unhurried posture.
+All four poses must be visibly distinct but restrained, with identical facial identity, clothing, accessories and body proportions across tiles. No giant motion effects, speech bubbles, symbols, floating hearts or stars.
+Art direction: match the reference's charming Korean storybook character with warm brown hand-drawn contours, gentle watercolor/colored-pencil paper texture and soft shaded colors. Paint the environment in the same medium. Keep the scenery lower contrast and slightly simpler than the character, with a readable full background in every tile rather than empty white space. Warm cream, sage, muted wood and ochre accents. No photorealism, no 3D, no flat vector replacement, no redesign. Opaque full scenery backgrounds, no transparency.
