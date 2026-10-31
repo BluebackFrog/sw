@@ -21,24 +21,39 @@ if ('IntersectionObserver' in window) {
   }), {threshold: 0.12});
   $$('.reveal').forEach(element => observer.observe(element));
 }
-// Editorial scenes, not a preview of a finalized app interface.
+// 소개용 앱 화면만 전환합니다. 마지막 체험 데모와 음성·입력 기능은 복원하지 않습니다.
 const scenes = [
-  {name: 'daily', label: '작은 이야기도 반갑게', quote: '“오늘 산책은 어떠셨어요?\n그 이야기가 궁금해요.”'},
-  {name: 'smile', label: '소소한 웃음을 함께', quote: '“우리, 재미있는 이야기\n하나 해볼까요?”'},
-  {name: 'comfort', label: '천천히, 편안하게', quote: '“천천히 말씀하셔도 괜찮아요.\n편하게 이야기해 주세요.”'}
+  {name: 'voice', label: '말로 건네는 첫마디', highlight: 'mic', mode: 'talk'},
+  {name: 'character', label: '마음이 가는 친구와 함께', highlight: 'character', mode: 'talk'},
+  {name: 'presets', label: '오늘은 어떤 이야기를 해볼까요?', highlight: 'presets', mode: 'word'},
+  {name: 'read', label: '큰 글씨로, 짧고 다정하게', highlight: 'response', mode: 'talk'}
 ];
 const steps = $$('.story-step');
 const sceneButtons = $$('[data-scene-select]');
-const stage = $('.portrait-stage');
+const stage = $('.device-stage');
 let activeScene = -1;
 function setScene(index, force = false) {
   if ((!force && index === activeScene) || !scenes[index]) return;
   activeScene = index;
   const scene = scenes[index];
+  const character = characters[activeCharacter];
   stage.dataset.scene = scene.name;
+  stage.dataset.highlight = scene.highlight;
+  stage.dataset.mode = scene.mode;
   $('#scene-kicker').textContent = scene.label;
   const quote = $('#scene-quote');
-  quote.textContent = characters[activeCharacter].quotes[index];
+  if (scene.name === 'character') {
+    quote.textContent = character.greeting;
+  } else if (scene.name === 'presets') {
+    quote.textContent = '끝말잇기 해볼까요?\n제가 먼저, 사과!';
+  } else if (scene.name === 'read') {
+    quote.textContent = character.quotes[2];
+  } else {
+    quote.textContent = character.quotes[0];
+  }
+  $('#phone-companion-name').textContent = `${character.name}와 함께`;
+  $('#phone-response-label').textContent = `${character.name}의 대답`;
+  $('#phone-character-caption').textContent = `${character.name} · ${character.description}`;
   quote.classList.remove('scene-enter');
   requestAnimationFrame(() => quote.classList.add('scene-enter'));
   sceneButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
@@ -64,7 +79,13 @@ function selectCharacter(key, announce = false) {
 }
 $$('[data-character-select]').forEach(button => button.addEventListener('click', () => selectCharacter(button.dataset.characterSelect, true)));
 selectCharacter(activeCharacter);
-const sceneAnchor = () => innerWidth < 800 ? Math.min(innerHeight - 70, innerHeight * .8) : innerHeight * .54;
+function sceneAnchor() {
+  // 모바일에서는 고정된 휴대폰 아래에 보이는 설명을 기준으로 장면을 고릅니다.
+  if (innerWidth < 800) {
+    return Math.min(innerHeight - 70, innerHeight * 0.8);
+  }
+  return innerHeight * 0.54;
+}
 sceneButtons.forEach(button => button.addEventListener('click', () => {
   const index = Number(button.dataset.sceneSelect);
   const box = steps[index].getBoundingClientRect();

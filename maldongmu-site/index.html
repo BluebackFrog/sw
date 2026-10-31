@@ -43,6 +43,8 @@
 </head>
 <body data-character="hodam">
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="icon-mic" viewBox="0 0 32 40"><rect x="10" y="2" width="12" height="22" rx="6" fill="currentColor"/><path d="M4 18v3a12 12 0 0 0 24 0v-3M16 33v5M10 38h12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+    <symbol id="icon-sound" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H4l1.5-4A8 8 0 1 1 20 11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20S3 15 3 8.5a4.5 4.5 0 0 1 9-1 4.5 4.5 0 0 1 9 1C21 15 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   </defs></svg>
@@ -102,20 +104,47 @@
     <section class="moments" id="moments" aria-labelledby="moments-title">
       <div class="wrap moments-intro reveal"><span class="eyebrow">말동무챗이 함께하고 싶은 일상</span><h2 id="moments-title">그 하루에,<br><span>이야기할 친구가 있다면.</span></h2></div>
       <div class="story-layout wrap">
-        <div class="portrait-column">
-          <div class="portrait-stage" data-scene="daily">
-            <span class="scene-kicker" id="scene-kicker">작은 이야기도 반갑게</span>
-            <div class="scene-quote" id="scene-quote">“오늘 산책은 어떠셨어요?<br>그 이야기가 궁금해요.”</div>
-            <div class="portrait-arch" aria-hidden="true"></div>
-            <img class="portrait-person" data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" loading="lazy">
-            <div class="scene-indicators" aria-label="함께할 일상 선택"><button data-scene-select="0" aria-label="일상을 나누는 친구" aria-pressed="true">01</button><button data-scene-select="1" aria-label="웃음을 나누는 친구" aria-pressed="false">02</button><button data-scene-select="2" aria-label="편안하게 이야기하는 친구" aria-pressed="false">03</button></div>
-            <span class="scene-note">말동무챗과 함께할 순간을 그려봤어요</span>
+        <div class="device-column">
+          <!-- 스크롤로 바뀌는 소개용 화면입니다. 실제 입력·음성 기능은 연결하지 않습니다. -->
+          <div class="device-stage" data-scene="voice" data-highlight="mic" data-mode="talk">
+            <span class="device-caption" id="scene-kicker">말로 건네는 첫마디</span>
+            <div class="phone" role="group" aria-label="말동무챗 앱 화면 예시">
+              <div class="phone-status" aria-hidden="true"><span>9:41</span><span class="island"></span><span>▮▮▮ ▰</span></div>
+              <div class="phone-header"><strong>말동무챗</strong><span id="phone-companion-name">호담이와 함께</span></div>
+              <div class="phone-content">
+                <div class="mock-response">
+                  <span><span id="phone-response-label">호담이의 대답</span><svg aria-hidden="true"><use href="#icon-sound"/></svg></span>
+                  <p id="scene-quote">“산책길에 무얼 보셨어요?<br>나도 그 이야기가 궁금해요.”</p>
+                </div>
+                <div class="mock-character">
+                  <img data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" loading="lazy">
+                  <span id="phone-character-caption">호담이가 이야기를 기다려요</span>
+                </div>
+                <div class="mock-controls" aria-label="음성 버튼과 이야기 선택의 배치 예시">
+                  <div class="mock-preset mock-talk">말동무</div>
+                  <div class="mock-preset mock-word">끝말잇기</div>
+                  <div class="mock-mic"><svg aria-hidden="true"><use href="#icon-mic"/></svg><span>눌러서<br>말하기</span></div>
+                  <div class="mock-preset mock-health">건강정보</div>
+                  <div class="mock-preset mock-humor">유머</div>
+                </div>
+                <div class="mock-keyboard">⌨ 글자로 쓰기</div>
+              </div>
+              <div class="phone-home" aria-hidden="true"></div>
+            </div>
+            <span class="screen-disclaimer">사용 모습을 그린 예시 · 출시 과정에서 달라질 수 있어요</span>
+          </div>
+          <div class="scene-dots" aria-label="앱 소개 장면 선택">
+            <button data-scene-select="0" aria-label="음성 대화 화면" aria-pressed="true">01</button>
+            <button data-scene-select="1" aria-label="친근한 캐릭터 화면" aria-pressed="false">02</button>
+            <button data-scene-select="2" aria-label="이야기 선택 화면" aria-pressed="false">03</button>
+            <button data-scene-select="3" aria-label="큰 글씨와 짧은 대답 화면" aria-pressed="false">04</button>
           </div>
         </div>
         <div class="stories">
-          <article class="story-step" data-step="0"><div class="story-copy reveal"><span class="story-number">01 / 이야기를 나누고</span><h3>별일 없는 하루도,<br><em>이야기가 되도록.</em></h3><p>오늘 본 풍경, 오래된 추억.<br>작은 이야기에도 귀 기울이는<br>다정한 AI 말동무.</p><span class="story-line" aria-hidden="true"></span></div></article>
-          <article class="story-step" data-step="1"><div class="story-copy reveal"><span class="story-number">02 / 함께 웃고</span><h3>심심한 오후에는,<br><em>한 번 더 웃을 수 있게.</em></h3><p>가벼운 농담도, 소소한 말놀이도.<br>부담 없이 함께하는<br>일상 속 작은 즐거움.</p><span class="story-line" aria-hidden="true"></span></div></article>
-          <article class="story-step" data-step="2"><div class="story-copy reveal"><span class="story-number">03 / 편안하게 가까워지고</span><h3>낯선 기술이어도,<br><em>이야기는 편안하게.</em></h3><p>어렵게 배우지 않아도 괜찮도록.<br>익숙한 대화에 가까운 모습을<br>준비하고 있어요.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="0"><div class="story-copy reveal"><span class="story-number">01 / 목소리로 이야기하고</span><h3>말 한마디로,<br><em>대화를 시작하도록.</em></h3><p>작은 자판을 찾는 대신,<br>편하게 말을 건네고<br>다정한 대답을 듣는 시간.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="1"><div class="story-copy reveal"><span class="story-number">02 / 마음이 가는 친구와</span><h3>딱딱한 화면 대신,<br><em>정겨운 말동무.</em></h3><p>반갑게 맞아주는 얼굴과<br>익숙하고 친근한 말투로.<br>가까운 이웃처럼 이야기해요.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="2"><div class="story-copy reveal"><span class="story-number">03 / 함께 웃고 즐기며</span><h3>무슨 말을 할지 몰라도,<br><em>하나만 골라보세요.</em></h3><p>소소한 수다부터 끝말잇기까지.<br>그날의 기분에 맞는 이야기를<br>쉽게 고를 수 있도록.</p><span class="story-line" aria-hidden="true"></span></div></article>
+          <article class="story-step" data-step="3"><div class="story-copy reveal"><span class="story-number">04 / 천천히, 편안하게</span><h3>읽기 편한 글씨로,<br><em>짧고 다정하게.</em></h3><p>긴 설명보다 쉬운 한두 문장.<br>서두르지 않고<br>편안하게 나누는 대화.</p><span class="story-line" aria-hidden="true"></span></div></article>
         </div>
       </div>
     </section>
