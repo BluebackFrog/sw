@@ -1,0 +1,12 @@
+{
+  "name": "maldongmu-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mac과 Windows에서 함께 관리하는 말동무챗 소개 페이지",
+  "scripts": {
+    "start": "node scripts/preview.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

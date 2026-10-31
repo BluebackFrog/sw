@@ -1,4 +1,12 @@
 .DS_Store
+Thumbs.db
+Desktop.ini
+node_modules/
+.netlify/
+.env
+.env.*
+!.env.example
+*.log
 
 # 수업 원본, 서버 백업, 실제 검증 기록은 로컬에 보관합니다.
 /class-reference/
