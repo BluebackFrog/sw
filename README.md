@@ -27,6 +27,8 @@ VS Code에서 `maldongmu-site/index.html`을 Live Server로 열면 됩니다. �
 
 ## Netlify 배포
 
+현재 Netlify와 GitHub의 자동 배포 연결은 설정하지 않았습니다. GitHub에 코드를 올린 것만으로 사이트가 갱신되지는 않습니다. 직접 배포할 때는 Netlify 프로젝트의 업로드 영역에 `maldongmu-site` 폴더 전체를 올립니다.
+
 이 저장소를 Netlify에 연결할 때 배포 브랜치는 `main`, 배포 폴더는 `maldongmu-site`를 사용합니다. 별도 빌드 명령은 필요하지 않으며 배포 폴더는 `netlify.toml`에 설정되어 있습니다.
 
 기존 사이트 주소: https://lively-bubblegum-3768ab.netlify.app/
