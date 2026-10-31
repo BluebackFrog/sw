@@ -96,6 +96,8 @@ GitHub는 코드, Netlify는 공개 사이트, Apps Script는 요청 처리, Goo
 
 이 저장소를 Netlify에 연결할 때 배포 브랜치는 `main`, 배포 폴더는 `maldongmu-site`를 사용합니다. 별도 빌드 명령은 필요하지 않으며 배포 폴더는 `netlify.toml`에 설정되어 있습니다.
 
-기존 사이트 주소: https://lively-bubblegum-3768ab.netlify.app/
+공개 사이트: https://lively-bubblegum-3768ab.netlify.app/
 
-최신 배포 완료와 공개 설정을 확인한 뒤 이 주소를 공유합니다. 커뮤니티별 유입 구분에는 `?utm=indietalk`처럼 `utm` 값을 붙일 수 있습니다. Live Server의 `localhost` 또는 `127.0.0.1` 주소는 외부 공유용이 아닙니다.
+2026-10-31에 캐릭터 원본 5개가 포함된 최신 사이트를 수동 배포하고 공개했습니다. 로그인 없는 접속, 배포 파일의 원본 일치, 브라우저에서 다섯 캐릭터의 표시와 전환을 확인했습니다.
+
+외부 커뮤니티에는 위의 공개 주소를 공유합니다. 커뮤니티별 유입 구분에는 `?utm=indietalk`처럼 `utm` 값을 붙일 수 있습니다. Live Server의 `localhost` 또는 `127.0.0.1` 주소는 외부 공유용이 아닙니다.
