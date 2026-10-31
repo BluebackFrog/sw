@@ -1,0 +1,23 @@
+Asset: maldongmu-site/assets/grandparents-watercolor-wide.png
+Created: 2026-11-01
+Method: built-in ImageGen (image_gen.imagegen), edit with a supporting product reference.
+Edit target: maldongmu-site/assets/grandparents-watercolor.png (preserved).
+Supporting reference: user-attached wallet phone case image, codex-clipboard-768fad42-5727-4e85-bcc3-2867dbbcb963.png.
+Purpose: older grandparents, uncrossed legs, a folio wallet phone case, and a wider softly fading living room scene.
+Final prompt:
+Use case: style-transfer and precise-object-edit.
+Asset type: the main watercolor illustration on a Korean companionship website.
+Input images: Image 1 is the EDIT TARGET, the warm watercolor of a Korean grandmother and grandfather on a sofa sharing a phone. Image 2 is a PRODUCT REFERENCE ONLY for the construction of a book-style wallet phone case. Do not reproduce its product collage, extra cases, lettering, or product photography.
+
+Edit the first painting into a wider composition while retaining its recognizable couple, warm smiling interaction, sage cardigan on the grandmother, cream sweater and gray trousers on the grandfather, and handmade watercolor medium.
+Make both people visibly older, around their late seventies or early eighties: mostly silver-white hair, the grandfather with a thinner gently receding hairline, softer aged facial contours, delicate lines around eyes and mouths and subtly older hands. Preserve natural affectionate smiles and dignity. Express age through economical watercolor marks, not hyper-detailed photographic wrinkles. Both people still look down at the same phone together.
+
+IMPORTANT POSE CHANGE: the grandfather must NOT cross his legs. He sits normally on the sofa with both thighs and knees side by side, both shins descending naturally toward the floor, neither knee or ankle resting on the opposite leg. Clearly show both separate knees and upper shins so this is unmistakable. His right hand can rest naturally on his own thigh. The grandmother also sits naturally beside him. Do not overlap their knees in a way that resembles crossed legs. Keep human anatomy and fingers coherent.
+
+Replace the bare smartphone with a recognizable open FOLIO WALLET CASE like the second reference: a slim dark brown leather-look book cover, warm tan lining, a few subtle card-slot seams inside the flap, and a small magnetic closure tab. It must look like a phone in a hinged wallet-style case, not a separate wallet. The grandmother holds it naturally upright, with the front cover open to one side, its phone screen oriented toward the couple. Use a believable three-quarter angle that lets the viewer recognize the hinged open cover and closure tab; do not turn the screen away from the couple merely to display the case. Small blank card edges may be suggested, with no readable numbers, logos or branding. Render the case in the SAME loose watercolor style.
+
+WIDEN / OUTPAINT: landscape 4:3 composition. Pull back slightly and extend the sofa and living room on BOTH left and right sides, with broad soft background areas around the couple. Keep the couple large enough to read clearly, roughly the central 55–60 percent of image width. Include the uncrossed knees and upper shins; feet may fall outside the lower edge. Add only natural continuations of the existing softly suggested window, curtain, indoor plants, pale wall and sofa. No extra people or additional story elements. The scene must feel spacious horizontally rather than a tall tightly cropped portrait.
+
+EDGE TREATMENT: large, gentle, irregular watercolor washes. Across the outer approximately 15–20 percent of the canvas, let background detail and pigment gradually dissolve into warm ivory unpainted paper, especially at the left and right. Very smooth progressive transition, no dark rectangular edge, no hard cutout, no sharp border. Keep both faces, hands, phone and knees within the fully readable central painted area.
+
+Style invariants: genuine loose transparent watercolor on lightly textured cold-pressed paper, wet-on-wet blooms, restrained pigment pooling, soft brush marks, translucent sage, ochre, peach and ivory pigments. A painted face rather than photographic skin. Natural adult proportions. No anime, cartoon, chibi, vector outline, 3D render, glossy digital airbrush, photographic pores or excessively detailed fabric. Soft warm daylight. Opaque warm off-white paper background. No text, caption, logo, watermark or graphic frame.
