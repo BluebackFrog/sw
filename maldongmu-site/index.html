@@ -51,42 +51,27 @@
   <a class="skip" href="#intro">본문으로 건너뛰기</a>
   <header class="header">
     <a class="brand" href="#home" aria-label="말동무챗 처음으로"><svg aria-hidden="true"><use href="#icon-chat"/></svg>말동무<span>챗</span></a>
-    <nav aria-label="주 메뉴"><a href="#intro">우리의 마음</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a></nav>
+    <nav aria-label="주 메뉴"><a href="#intro">우리의 마음</a><a href="#companions">말동무 친구들</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a></nav>
     <button class="nav-cta" data-interest="header">말동무챗 만나보기 <span aria-hidden="true">↗</span></button>
     <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
     <div class="progress" aria-hidden="true"></div>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="모바일 메뉴" hidden><a href="#intro">우리의 마음</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a><button data-interest="mobile">말동무챗 만나보기 ↗</button></nav>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="모바일 메뉴" hidden><a href="#intro">우리의 마음</a><a href="#companions">말동무 친구들</a><a href="#moments">함께할 일상</a><a href="#questions">궁금한 점</a><button data-interest="mobile">말동무챗 만나보기 ↗</button></nav>
 
   <main>
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-grid wrap">
         <div class="hero-copy">
-          <p class="eyebrow hero-enter"><span class="seed-dot"></span> 부모님에게도, 할머니·할아버지에게도</p>
-          <h1 id="hero-title" class="hero-enter">부모님이<br>혼자 계시는 게<br><span>마음에 걸리시나요?</span></h1>
-          <p class="hero-description hero-enter">전화 한 통으로는 다 채우지 못한 하루.<br>그 곁에, 편히 말을 건넬 친구가 있다면요.</p>
-          <div class="hero-actions hero-enter"><button class="pill primary" data-interest="hero">우리 가족에게 소개하기 <span aria-hidden="true">→</span></button><a class="quiet-link" href="#moments">어떤 말동무인가요? ↓</a></div>
-          <p class="hero-foot hero-enter">가족을 생각하는 마음에서 시작한 AI 말동무</p>
+          <p class="eyebrow hero-enter"><span class="seed-dot" aria-hidden="true"></span> 통화를 끊고 나서도, 마음이 쓰인다면</p>
+          <h1 id="hero-title" class="hero-enter">혼자 계신 시간에도,<br>말벗이 되어주는<br><span>채팅 앱, 말동무챗.</span></h1>
+          <p class="hero-description hero-enter">자주 찾아뵙지 못해 마음 쓰이는<br>부모님, 그리고 할머니·할아버지께.<br>편히 말을 건네고 함께 웃을 AI 친구를 준비해요.</p>
+          <div class="hero-actions hero-enter"><button class="pill primary" data-interest="hero">우리 가족에게 소개하기 <span aria-hidden="true">→</span></button><a class="quiet-link" href="#intro">우리의 마음을 만나보세요 ↓</a></div>
+          <p class="hero-foot hero-enter">가족의 안부 사이사이를 채울 AI 말동무 · 출시 준비 중</p>
         </div>
-        <div class="hero-showcase">
-        <div class="hero-art">
-          <div class="sun-disc" aria-hidden="true"></div><span class="leaf leaf-one" aria-hidden="true"></span><span class="leaf leaf-two" aria-hidden="true"></span>
-          <div class="hero-greeting" data-parallax="0.025"><span id="friend-greeting-label">호담이의 다정한 첫인사</span><strong id="friend-greeting">“어흥! 오늘 하루 어땠어요?”</strong><svg aria-hidden="true"><use href="#icon-chat"/></svg></div>
-          <div class="hero-person" data-parallax="-0.025"><img data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" fetchpriority="high"></div>
-          <div class="character-tag"><svg aria-hidden="true"><use href="#icon-heart"/></svg><div><small id="friend-description">민화 속 순한 호랑이</small><strong id="friend-name">수다 친구, 호담이</strong></div></div>
-        </div>
-        <div class="friend-picker" role="group" aria-labelledby="friend-picker-title">
-          <p id="friend-picker-title">마음이 가는 친구를 골라보세요.</p>
-          <div class="friend-options">
-            <button data-character-select="boksil" aria-label="복실이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/01-boksil.png" alt="" width="1199" height="1312"><span>복실이</span><small>강아지</small></button>
-            <button data-character-select="hodam" aria-label="호담이 캐릭터 보기" aria-pressed="true"><img src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536"><span>호담이</span><small>호랑이</small></button>
-            <button data-character-select="dodam" aria-label="도담이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/03-dodam.png" alt="" width="1222" height="1287"><span>도담이</span><small>도깨비</small></button>
-            <button data-character-select="boksoon" aria-label="복순 할머니 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/05-boksoon.png" alt="" width="1024" height="1536"><span>복순</span><small>할머니</small></button>
-            <button data-character-select="deoksu" aria-label="덕수 할아버지 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/06-deoksu.png" alt="" width="1024" height="1536"><span>덕수</span><small>할아버지</small></button>
-          </div>
-          <span class="sr-only" id="character-announcement" role="status"></span>
-        </div>
-        </div>
+        <figure class="family-photo hero-enter">
+          <img src="assets/grandparents-phone.png" alt="소파에 나란히 앉아 휴대폰을 함께 보며 미소 짓는 할머니와 할아버지" width="1122" height="1402" fetchpriority="high">
+          <figcaption class="family-moment"><svg aria-hidden="true"><use href="#icon-heart"/></svg><span>우리가 바라는 건,<br><strong>하루에 이런 미소가 하나 더.</strong></span></figcaption>
+        </figure>
       </div>
       <div class="hero-bottom wrap"><span>멀리 있어도, 마음은 늘 가까이.</span><a href="#intro">우리의 이야기를 만나보세요 <span aria-hidden="true">↓</span></a><span class="preview-label">부모님을 위한 AI 말동무</span></div>
     </section>
@@ -97,6 +82,37 @@
         <div class="intro-grid">
           <div class="intro-copy reveal"><h2 id="intro-title">통화를 끊고 나서도,<br><span>괜히 마음이 쓰이는 날.</span></h2><p>자주 찾아뵙고 싶지만,<br>마음처럼 쉽지 않으니까.</p><p>가족의 안부 사이사이,<br>가볍게 말을 건넬 친구를 생각했어요.</p></div>
           <div class="thoughts"><p class="thought reveal"><span aria-hidden="true">“</span>오늘은 누구와<br>이야기하셨을까.</p><p class="thought reveal"><span aria-hidden="true">“</span>별일 없다 하셔도,<br>조금 적적하진 않으실까.</p><p class="thought thought-last reveal">부모님도, 할머니·할아버지도.<br><strong>오늘 하루가 조금 더 다정했으면.</strong></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="companions section" id="companions" aria-labelledby="companions-title">
+      <div class="wrap companions-grid">
+        <div class="companions-copy reveal">
+          <span class="eyebrow">그 마음을 담아, 다섯 친구를 소개해요</span>
+          <h2 id="companions-title">말을 걸고 싶어지는,<br><span>나에게 맞는 말동무.</span></h2>
+          <p>반갑게 맞아주는 강아지부터<br>정겨운 동네 이웃 같은 친구까지.</p>
+          <p>부모님이 좋아하실 얼굴과 말투를<br>하나씩 만나보세요.</p>
+          <a class="quiet-link" href="#moments">함께할 일상 살펴보기 <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-showcase">
+        <div class="hero-art">
+          <div class="sun-disc" aria-hidden="true"></div><span class="leaf leaf-one" aria-hidden="true"></span><span class="leaf leaf-two" aria-hidden="true"></span>
+          <div class="hero-greeting"><span id="friend-greeting-label">호담이의 다정한 첫인사</span><strong id="friend-greeting">“어흥! 오늘 하루 어땠어요?”</strong><svg aria-hidden="true"><use href="#icon-chat"/></svg></div>
+          <div class="hero-person"><img data-companion-image src="assets/character-candidates/02-hodam.png" alt="민화 속 순한 호랑이, 호담이" width="1024" height="1536" loading="lazy"></div>
+          <div class="character-tag"><svg aria-hidden="true"><use href="#icon-heart"/></svg><div><small id="friend-description">민화 속 순한 호랑이</small><strong id="friend-name">수다 친구, 호담이</strong></div></div>
+        </div>
+        <div class="friend-picker" role="group" aria-labelledby="friend-picker-title">
+          <p id="friend-picker-title">마음이 가는 친구를 골라보세요.</p>
+          <div class="friend-options">
+            <button data-character-select="boksil" aria-label="복실이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/01-boksil.png" alt="" width="1199" height="1312" loading="lazy"><span>복실이</span><small>강아지</small></button>
+            <button data-character-select="hodam" aria-label="호담이 캐릭터 보기" aria-pressed="true"><img src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536" loading="lazy"><span>호담이</span><small>호랑이</small></button>
+            <button data-character-select="dodam" aria-label="도담이 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/03-dodam.png" alt="" width="1222" height="1287" loading="lazy"><span>도담이</span><small>도깨비</small></button>
+            <button data-character-select="boksoon" aria-label="복순 할머니 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/05-boksoon.png" alt="" width="1024" height="1536" loading="lazy"><span>복순</span><small>할머니</small></button>
+            <button data-character-select="deoksu" aria-label="덕수 할아버지 캐릭터 보기" aria-pressed="false"><img src="assets/character-candidates/06-deoksu.png" alt="" width="1024" height="1536" loading="lazy"><span>덕수</span><small>할아버지</small></button>
+          </div>
+          <span class="sr-only" id="character-announcement" role="status"></span>
+        </div>
         </div>
       </div>
     </section>

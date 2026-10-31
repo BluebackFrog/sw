@@ -92,15 +92,12 @@ sceneButtons.forEach(button => button.addEventListener('click', () => {
   setScene(index);
   scrollTo({top: Math.max(0, scrollY + box.top + box.height * .45 - sceneAnchor()), behavior: reducedMotion.matches ? 'instant' : 'smooth'});
 }));
-const hero = $('.hero');
-const parallaxLayers = $$('[data-parallax]');
 let scrollQueued = false;
 function updateScroll() {
   scrollQueued = false;
   const total = document.documentElement.scrollHeight - innerHeight;
   document.documentElement.style.setProperty('--page-progress', total > 0 ? Math.min(1, Math.max(0, scrollY / total)) : 0);
   $('.header').classList.toggle('scrolled', scrollY > 30);
-  if (!reducedMotion.matches && scrollY < hero.offsetHeight + innerHeight) parallaxLayers.forEach(element => {element.style.translate = `0 ${Math.min(scrollY, 900) * Number(element.dataset.parallax)}px`;});
   let closest = 0, distance = Infinity;
   steps.forEach((step, index) => {
     const box = step.getBoundingClientRect();
@@ -116,10 +113,7 @@ function queueScroll() {
 }
 addEventListener('scroll', queueScroll, {passive: true});
 addEventListener('resize', queueScroll);
-reducedMotion.addEventListener('change', () => {
-  if (reducedMotion.matches) parallaxLayers.forEach(element => {element.style.translate = 'none';});
-  queueScroll();
-});
+reducedMotion.addEventListener('change', queueScroll);
 updateScroll();
 
 const menu = $('#mobile-menu');

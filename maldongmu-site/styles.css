@@ -38,6 +38,132 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
 .class-form textarea { font-family: inherit; }
 .class-form button { margin-top: 16px; }
 
+/* 가족의 일상에서 시작하는 첫 화면과 아래쪽 캐릭터 소개 */
+.hero {
+  padding-top: 148px;
+  background: #f3eddf;
+}
+.hero-grid {
+  grid-template-columns: 1.08fr 1fr;
+  gap: 64px;
+}
+.hero h1 {
+  font-size: clamp(40px, 4.1vw, 58px);
+  line-height: 1.32;
+  letter-spacing: -.055em;
+}
+.hero-description {
+  max-width: 490px;
+  font-size: 18px;
+  line-height: 1.9;
+}
+.hero-foot { font-size: 13px; }
+.family-photo {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 0 18px;
+  justify-self: end;
+}
+.family-photo > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1122 / 1402;
+  object-fit: cover;
+  border-radius: 36px 36px 110px 36px;
+}
+.family-moment {
+  position: absolute;
+  left: -28px;
+  bottom: -18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  border: 1px solid #e5e0d1;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--paper);
+  box-shadow: 0 10px 30px #57471e0b;
+  color: #777c6c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.family-moment svg { color: var(--accent); }
+.family-moment strong {
+  color: var(--deep);
+  font-size: 17px;
+  font-weight: 600;
+}
+.companions {
+  background: #f1ecdf;
+  overflow: hidden;
+}
+.companions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  align-items: center;
+  gap: 90px;
+}
+.companions-copy .eyebrow { color: var(--accent); }
+.companions-copy h2 {
+  margin-top: 24px;
+  font-size: clamp(32px, 3.4vw, 44px);
+}
+.companions-copy > p {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.9;
+}
+.companions-copy .quiet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  border-bottom: 1px solid #aeb59e;
+}
+@media (max-width: 1150px) {
+  .hero-grid { gap: 40px; }
+  .hero h1 { font-size: clamp(34px, 4.4vw, 49px); }
+  .hero-description { font-size: 16px; }
+  .hero-actions { gap: 10px 18px; }
+  .hero-foot { font-size: 12px; }
+  .family-moment { left: -18px; padding: 16px 20px; }
+  .family-moment strong { font-size: 15px; }
+  .companions-grid { gap: 45px; }
+  .companions-copy > p { font-size: 17px; }
+}
+@media (min-width: 800px) and (max-width: 1050px) {
+  .header .nav-cta { display: none; }
+}
+@media (max-width: 799px) {
+  .hero { padding-top: 120px; }
+  .hero-grid { gap: 35px; }
+  .hero-copy { text-align: left; }
+  .hero .eyebrow { justify-content: flex-start; font-size: 12px; }
+  .hero h1 { font-size: clamp(32px, 7.6vw, 46px); margin-top: 22px; }
+  .hero-description { font-size: 16px; margin-top: 22px; }
+  .hero-actions { align-items: flex-start; margin-top: 25px; gap: 4px; }
+  .hero-foot { margin-top: 12px; font-size: 11px; }
+  .family-photo { max-width: 480px; align-self: center; margin: 0 0 18px; }
+  .family-photo > img { border-radius: 26px 26px 80px 26px; }
+  .family-moment { left: 12px; bottom: -18px; gap: 12px; font-size: 12px; padding: 14px 18px; }
+  .family-moment strong { font-size: 15px; }
+  .hero-bottom { margin-top: 30px; }
+  .companions-grid { grid-template-columns: 1fr; gap: 38px; }
+  .companions-copy h2 { font-size: 32px; margin-top: 20px; }
+  .companions-copy > p { font-size: 17px; margin-top: 20px; }
+  .companions .hero-showcase { margin: 0 auto; }
+}
+@media (max-width: 380px) {
+  .hero h1 { font-size: 30px; }
+  .hero .eyebrow { font-size: 11px; }
+  .hero-description { font-size: 15px; }
+  .family-moment { padding: 12px 14px; }
+  .family-moment strong { font-size: 14px; }
+  .companions-copy h2 { font-size: 28px; }
+}
+
 /* 스크롤에 따라 전환되는 소개용 앱 미리보기 */
 .device-column {
   position:sticky;
