@@ -42,6 +42,7 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
 .hero {
   padding-top: 148px;
   background: #f3eddf;
+  isolation: isolate;
 }
 .hero-grid {
   grid-template-columns: 1.08fr 1fr;
@@ -64,13 +65,23 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   max-width: 480px;
   margin: 0 0 18px;
   justify-self: end;
+  mix-blend-mode: multiply;
 }
 .family-photo > img {
   width: 100%;
   height: auto;
   aspect-ratio: 1122 / 1402;
   object-fit: cover;
-  border-radius: 36px 36px 110px 36px;
+  border-radius: 0;
+  /* 종이의 흰색은 배경에 섞고, 수채화의 네 가장자리는 서서히 지웁니다. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 12%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 9%, #000 79%, transparent);
+  mask-image:
+    linear-gradient(to right, transparent, #000 12%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 9%, #000 79%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 .family-moment {
   position: absolute;
@@ -146,7 +157,6 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .hero-actions { align-items: flex-start; margin-top: 25px; gap: 4px; }
   .hero-foot { margin-top: 12px; font-size: 11px; }
   .family-photo { max-width: 480px; align-self: center; margin: 0 0 18px; }
-  .family-photo > img { border-radius: 26px 26px 80px 26px; }
   .family-moment { left: 12px; bottom: -18px; gap: 12px; font-size: 12px; padding: 14px 18px; }
   .family-moment strong { font-size: 15px; }
   .hero-bottom { margin-top: 30px; }
