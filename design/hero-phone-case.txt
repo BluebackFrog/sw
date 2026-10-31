@@ -1,0 +1,22 @@
+Created: 2026-11-01
+Method: built-in ImageGen (image_gen.imagegen), precise local object edits.
+Final asset: maldongmu-site/assets/grandparents-watercolor-wide.png
+Edit target: the same existing hero asset, replaced at the user's request.
+Correction: the outside of the folio's left cover must not show cards or card slots.
+This edit supersedes earlier instructions suggesting visible cards on that surface.
+
+Initial correction prompt:
+Use case: precise-object-edit.
+Input image 1 is the EDIT TARGET: the existing watercolor painting of an elderly couple looking at a phone.
+
+Make one very small local correction ONLY to the viewer-facing LEFT FLAP of the brown folio phone case, directly in front of the grandmother's chest. It currently incorrectly shows two colored card edges, horizontal card slots, and a small pale slit near the top of this outward-facing flap. Remove ALL of those cards, pocket openings, slot seams and pale slit from this flap. Replace the whole visible exterior flap surface with uninterrupted PLAIN DARK BROWN LEATHER in the same watercolor rendering. This is the OUTSIDE of the front cover, so there must be no visible card storage on it. Only subtle natural leather shading and the outer perimeter edge are appropriate; no horizontal lines, inset rectangles, decorative embossing, printing, symbols or logos on this flap.
+
+Keep the open book-style case geometry, central hinge, phone's right-side rear camera opening and closure tab, the couple's hands and every other part of the image unchanged. In particular preserve the same elderly faces, expressions, white hair, grandfather's sage-and-ivory CHECK SHIRT and beige COTTON TROUSERS, grandmother's clothing, uncrossed legs, sofa, spacious background, soft daylight and feathered edges. Do not relocate, resize or redesign the phone case. Do not alter the scene or repaint unrelated areas. Preserve original 4:3 framing, colors, size and handmade watercolor paper texture. Output just the corrected complete painting, no text or watermark.
+
+Final refinement prompt:
+Use case: precise-object-edit.
+This image is the EDIT TARGET. Make only a tiny local edit to the phone case's viewer-facing LEFT cover flap (the brown rectangular panel to the left of the central hinge, partly held by the grandmother's fingers).
+
+That panel must be completely PLAIN, UNPATTERNED dark brown leather. Remove the currently visible floral/leaf-like embossing and all decorative relief lines from this left panel. Paint a simple calm dark-brown surface with only a very soft light-to-dark wash and extremely fine unobtrusive leather grain. No flowers, leaves, swirls, embossed ornaments, diamonds, logos, cards, card slots, pockets or horizontal slits. Think of a smooth undecorated brown leather notebook cover. Preserve its outline and outer-edge stitching only. Do not make the paper/paint texture look like ornamental leather tooling.
+
+Do not change anything else: the case hinge, right-side phone back and camera opening, closure strap, hands, faces, clothes, check shirt, beige cotton trousers, sofa, background, watercolor medium, framing, dimensions and soft edges all stay the same. Output the entire corrected painting, with this single panel now plain brown leather.
