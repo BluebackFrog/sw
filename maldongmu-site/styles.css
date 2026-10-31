@@ -105,6 +105,32 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   font-size: 17px;
   font-weight: 600;
 }
+.intro { isolation: isolate; }
+.intro-grid { row-gap: 28px; }
+.intro-scene {
+  width: 100%;
+  max-width: 540px;
+  margin: 0;
+  mix-blend-mode: multiply;
+}
+.intro-scene > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 7%, #000 88%, transparent);
+  mask-image:
+    linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 7%, #000 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+@media (min-width: 800px) {
+  .intro-grid > .intro-copy { grid-column: 1; grid-row: 1; }
+  .intro-scene { grid-column: 1; grid-row: 2; }
+  .intro-grid > .thoughts { grid-column: 2; grid-row: 1 / span 2; }
+}
 .companions {
   background: #f1ecdf;
   overflow: hidden;
