@@ -563,6 +563,27 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .device-caption { top: 12px; font-size: 12px; }
 }
 
+/* 선택한 친구 앞뒤로 다섯 캐릭터가 함께 서 있는 마지막 인사. */
+.closing { padding-block: 70px; }
+.closing > .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center; }
+.closing-friends { position: relative; height: 340px; min-width: 0; pointer-events: none; }
+.closing-friends .closing-person { z-index: 1; width: 42%; height: 90%; left: 50%; right: auto; top: auto; bottom: 0; translate: -50% 0; rotate: 0deg; object-fit: contain; object-position: center bottom; }
+.closing-silhouette { position: absolute; bottom: 10px; width: 29%; height: 82%; background: #dce4d0; opacity: .24; -webkit-mask: var(--friend-art) center bottom / contain no-repeat; mask: var(--friend-art) center bottom / contain no-repeat; }
+.closing-silhouette:nth-child(1) { left: 0; }
+.closing-silhouette:nth-child(2) { left: 18%; height: 96%; bottom: 24px; opacity: .32; }
+.closing-silhouette:nth-child(3) { right: 18%; height: 96%; bottom: 24px; opacity: .32; }
+.closing-silhouette:nth-child(4) { right: 0; }
+@media (min-width: 800px) and (max-width: 1150px) {
+  .closing > .wrap { grid-template-columns: 1.15fr 1fr; gap: 12px; }
+  .closing h2 { font-size: clamp(29px, 3.4vw, 39px); }
+  .closing-friends { height: 290px; }
+}
+@media (max-width: 799px) {
+  .closing { padding-block: 55px 35px; }
+  .closing > .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .closing-friends { width: min(480px, 100%); height: clamp(210px, 62vw, 300px); justify-self: center; }
+}
+
 /* 손글씨는 공감 제목 두 줄과 초대 문구의 제목에만 사용합니다. */
 .brand { font-weight: 750; letter-spacing: -.045em; }
 .brand svg { width: 40px; height: 40px; margin-right: 8px; }

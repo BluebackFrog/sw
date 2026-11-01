@@ -121,6 +121,12 @@ function selectCharacter(key, announce = false) {
     image.height = character.height;
     image.alt = image.dataset.companionImage === 'decorative' ? '' : `${character.description} ${character.name}`;
   });
+  const otherFriends = ['boksil', 'boksoon', 'hodam', 'deoksu', 'dodam'].filter(friend => friend !== key);
+  $$('[data-closing-companion]').forEach((silhouette, index) => {
+    const friend = otherFriends[index];
+    silhouette.dataset.closingCompanion = friend;
+    silhouette.style.setProperty('--friend-art', `url("assets/character-candidates/${characters[friend].file}")`);
+  });
   $('#friend-greeting').textContent = character.greeting;
   $('#friend-description').textContent = character.description;
   $('#friend-name').textContent = character.title;
