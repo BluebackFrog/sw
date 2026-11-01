@@ -14,7 +14,9 @@
 
 ## 파일 구성
 
-- `maldongmu-site/index.html`: 화면과 수업 예제 기반 방문 기록·신청 폼
+- `maldongmu-site/index.html`: 화면과 출시 소식 신청 폼
+- `maldongmu-site/signup.js`: 쿠키 ID, 방문 기록과 이메일 신청 저장
+- `scripts/experiment-report.cjs`: 실험 기간과 홍보 유입별 고유 방문자·신청자 집계
 - `maldongmu-site/styles.css`: 화면 스타일
 - `maldongmu-site/app.js`: 캐릭터 선택과 화면 동작
 - `maldongmu-site/assets/`: 캐릭터 PNG, 로고, 글꼴과 글꼴 라이선스
@@ -24,7 +26,7 @@
 
 ## 로컬 확인
 
-VS Code에서 `maldongmu-site/index.html`을 Live Server로 열면 됩니다. 이미지까지 확인하려면 `assets/character-candidates/`의 PNG 5개가 함께 있어야 합니다. 로컬에서도 방문 기록과 신청 폼은 연결된 실제 Google 스프레드시트로 전송됩니다.
+VS Code에서 `maldongmu-site/index.html`을 Live Server로 열면 됩니다. 이미지까지 확인하려면 `assets/character-candidates/`의 PNG 5개가 함께 있어야 합니다. 로컬에서도 실제 시트에 전송되지만 `localhost`, `127.0.0.1`, `file:` 접속은 테스트로 표시되어 실험 집계에서 제외됩니다.
 
 Node.js가 설치되어 있으면 Mac과 Windows 모두 저장소 폴더에서 다음 명령을 사용할 수도 있습니다. 별도 패키지 설치는 필요 없습니다.
 
@@ -87,7 +89,7 @@ Windows에서 첫 push는 GitHub 로그인이 필요합니다. Git Credential Ma
 
 ## 함께 쓰는 클라우드 설정
 
-두 컴퓨터의 HTML은 같은 `addrScript`를 사용하므로 기존 Apps Script와 Google Sheets를 그대로 사용합니다. PC마다 새 백엔드나 DB를 만들 필요가 없습니다. 로컬 미리보기에서 접속·폼 제출을 하면 실제 시트에 기록되며, 쿠키 방문자 ID는 컴퓨터·브라우저·사이트 주소별로 다를 수 있습니다.
+두 컴퓨터의 `signup.js`는 같은 `endpoint`를 사용하므로 기존 Apps Script와 Google Sheets를 그대로 사용합니다. PC마다 새 백엔드나 DB를 만들 필요가 없습니다. 로컬 미리보기의 접속·신청은 테스트 기록으로 저장되며 쿠키 방문자 ID는 컴퓨터·브라우저·사이트 주소별로 다를 수 있습니다.
 
 GitHub는 코드, Netlify는 공개 사이트, Apps Script는 요청 처리, Google Sheets는 데이터 보관을 담당합니다. Apps Script 편집기의 코드는 이 저장소의 HTML과 별도로 배포됩니다. 서버 코드를 바꿀 때는 기존 웹 앱 배포를 새 버전으로 갱신합니다.
 
@@ -95,10 +97,37 @@ GitHub는 코드, Netlify는 공개 사이트, Apps Script는 요청 처리, Goo
 
 방문자의 브라우저가 Google Apps Script 웹 앱으로 요청을 보내면, Apps Script가 스프레드시트에 행을 추가합니다.
 
-- `visitors`: 쿠키 식별자, 방문 주소, IP, 유입 주소, 시각, `utm`, 기기 유형
-- `tab_final`: 쿠키 식별자, 이메일, 의견
+- `xyz_visitors`: `id`, `experiment_id`, `time_stamp`, `utm`, `landingUrl`, `referer`, `device`, `ip`, `is_test`
+- `xyz_signups`: `id`, `experiment_id`, `time_stamp`, `utm`, `email`, `advice`, `is_test`
+- `visitors`, `tab_final`: 이전 사이트가 사용하는 기존 기록. 새 실험에는 합산하지 않습니다.
 
-연결 주소는 `index.html`의 `addrScript`에 있습니다. 서버는 JSON으로 응답하며, 폼은 `success: true`를 확인한 뒤 입력을 비우고 완료 팝업을 표시합니다. Postman은 수동 요청 테스트용이며 사이트 실행에는 필요하지 않습니다. 자동 메일 발송은 연결하지 않았습니다.
+연결 주소는 `signup.js`의 `endpoint`에 있습니다. 기존 Apps Script는 탭의 첫 행에 있는 열 이름에 맞춰 데이터를 저장하므로 위 열 이름을 임의로 바꾸지 않습니다. 새 탭 두 개는 기존 DB에 추가했으며 서버 코드나 배포 주소는 바꾸지 않았습니다. 시각은 UTC ISO 문자열로 저장됩니다. 실제 IP와 이메일 저장 방식도 유지합니다.
+
+이메일만 필수이며 의견은 선택입니다. 서버의 `success: true`를 확인한 뒤 신청 완료를 표시합니다. 실패하면 입력을 보존하고 재시도할 수 있습니다. 전송 중에는 버튼을 잠그며 성공 후 같은 실험·브라우저에서 반복 신청을 막습니다. 자동 메일 발송은 연결하지 않았습니다.
+
+### 이메일 신청률 가설과 집계
+
+가설: **실험 기간에 지정한 홍보 링크로 들어온 고유 방문자의 10% 이상은 말동무챗 출시 알림을 받기 위해 이메일 신청을 완료할 것이다.**
+
+배포 후 홍보 전에 실험 시작·종료 시각과 사용할 `utm` 값을 정합니다. 예를 들어 홍보 링크 끝에 `?utm=community1`을 붙입니다. 실험 구분은 `email-signup-v1`이며 다음 실험에서는 `signup.js`와 집계 스크립트의 실험 ID를 함께 바꿉니다.
+
+- 분모 N: 해당 실험·기간에 지정한 `utm`으로 방문한 고유 ID 수.
+- 분자 S: 그 방문자 중 같은 기간에 이메일 신청이 저장된 고유 ID 수. 방문 기록보다 앞선 신청은 제외합니다.
+- 신청률: S / N. 새로고침·재방문·반복 제출 행은 같은 ID로 묶어 한 번만 셉니다.
+- `is_test=true`와 이전 실험의 기록은 제외합니다. 최초 홍보 유입을 브라우저에 기억하므로 이후 직접 재방문한 신청도 연결됩니다.
+- 쿠키 ID는 사람이 아니라 브라우저 단위의 근사치입니다. 기기 변경·쿠키와 저장소 삭제·저장 차단은 중복 또는 유입 연결 누락을 만들 수 있습니다.
+
+아래 기간은 **실행 예시**입니다. 실제로 정한 시작·종료 시각과 홍보 유입으로 바꿔 실행합니다. 시작은 포함하고 종료는 제외합니다. 이메일과 IP 원문은 출력하지 않습니다.
+
+```sh
+node scripts/experiment-report.cjs --from "2026-11-01T00:00:00+09:00" --to "2026-11-08T00:00:00+09:00" --utm "community1,community2"
+```
+
+현재 Windows 환경의 Node.js 24에서 인증서 확인 오류가 나면 `node --use-system-ca scripts/experiment-report.cjs ...`처럼 운영체제의 신뢰 인증서를 사용합니다. 인증서 검증을 끄지 않습니다.
+
+출력된 N과 S를 [수업의 비율 검정 코드](https://class.handsomeys.com/a_b_test_proportion.html)에 입력합니다. 관측 신청률과 통계적 검정 결과는 구분해 제출하며, 유의하지 않다는 이유만으로 ‘10% 이상임을 입증했다’고 해석하지 않습니다. 집계 로직 확인은 `node --test scripts/experiment-report.test.cjs`로 실행합니다.
+
+공개 사이트의 화면·폼 확인은 `?test=1&utm=qa-check`를 붙여 접속합니다. 같은 탭에서는 테스트 구분이 유지되며 `?test=0`으로 해제할 수 있습니다. 테스트 신청은 새로고침 후 다시 시도할 수 있습니다. 로컬 접속은 항상 테스트입니다. 휴대폰에서 확인할 때도 이 테스트 링크를 사용합니다.
 
 ## Netlify 배포
 

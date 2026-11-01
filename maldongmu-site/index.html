@@ -8,38 +8,8 @@
   <title>말동무챗 — 우리 가족의 하루에 이야기할 친구</title>
   <link rel="icon" href="assets/brand-grandparents.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
-  <!-- [Codex 연결] 수업 원문의 라이브러리를 교수님 설명대로 head에서 불러옵니다. -->
-  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/gh/dinoqqq/simple-popup@master/dist/jquery.simple-popup.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/gh/dinoqqq/simple-popup@master/dist/jquery.simple-popup.min.css" rel="stylesheet" type="text/css">
-  <!-- [수업 원문] Get User IP: 조회 실패 값도 원문의 "null" / 'unknown'을 유지합니다. -->
-  <script type="application/javascript">
-    var ip = "null";
-    function getIP(json) {
-        console.log(json);
-        try {
-            ip = json.ip;
-        } catch (e) {
-            ip = 'unknown';
-        }
-        return;
-    }
-  </script>
-  <script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
-  <!-- [Codex 연결] 수업 폼 CSS의 적용 범위만 제한해 기존 캐릭터 버튼을 보존합니다. -->
-  <style>
-    #class-form input, #class-form textarea, #class-form button {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        color: #333;
-    }
-  </style>
   <script src="app.js" defer></script>
+  <script src="signup.js" defer></script>
 </head>
 <body data-character="hodam">
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -189,189 +159,30 @@
       <span class="closing-silhouette" data-closing-companion="dodam" style="--friend-art:url('assets/character-candidates/03-dodam.png')"></span>
       <img class="closing-person" data-companion-image="decorative" src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536" loading="lazy">
     </div></div></section>
-    <!-- [Codex 연결] Form 만들기 원문의 center·입력창 ID·버튼 click 방식을 유지합니다. -->
-    <section class="section class-form" id="class-form" aria-label="말동무챗 출시 소식 신청">
-      <div class="wrap">
-        <center>
-            <p>이메일을 남겨주시면 서비스가 런칭되었을 때 알림을 드리겠습니다. </p>
-            <input id="submit-email" type="email" placeholder="알림을 받으실 이메일" /> <br><br>
-            <p>서비스가 이렇게 되었으면 좋겠다는 조언을 해 주세요 </p>
-            <textarea id="submit-advice" name="Text1" cols="40" rows="5" placeholder="서비스에 대한 조언을 남겨주세요"></textarea><br>
-            <button style="width:350px;" id="submit">지금 제출! </button>
-        </center>
+    <section class="section class-form" id="class-form" aria-labelledby="signup-title">
+      <div class="wrap signup-wrap">
+        <span class="eyebrow">말동무챗 출시 소식</span>
+        <h2 id="signup-title">만날 준비가 되면<br>가장 먼저 알려드릴게요.</h2>
+        <p class="signup-description">말동무챗은 아직 준비 중이에요.<br>이메일을 남겨주시면 출시 소식을 보내드릴게요.</p>
+        <form id="signup-form">
+          <label for="submit-email">알림을 받으실 이메일</label>
+          <input id="submit-email" name="email" type="email" placeholder="example@email.com" autocomplete="email" inputmode="email" maxlength="254" pattern="[^ @]+@[^ @]+[.][^ @]+" required>
+          <details class="signup-advice">
+            <summary>바라는 점도 알려주실래요? <span>(선택)</span></summary>
+            <label for="submit-advice">말동무챗에 바라는 점</label>
+            <textarea id="submit-advice" name="advice" rows="3" maxlength="1000" placeholder="어떤 말동무가 있으면 좋을까요?"></textarea>
+          </details>
+          <button class="pill primary" id="submit" type="submit">출시 소식 신청하기 <span aria-hidden="true">→</span></button>
+          <p id="signup-status" class="signup-status" role="status" aria-live="polite"></p>
+          <p id="signup-test-note" class="signup-test-note" hidden>테스트 접속입니다. 이 신청은 실험 결과에서 제외됩니다.</p>
+        </form>
       </div>
     </section>
   </main>
   <footer class="footer wrap"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><img src="assets/brand-grandparents.png" alt="" width="1254" height="1254" decoding="async"></span>말동무<span>챗</span></a><div class="footer-notes"><p>준비 중인 서비스를 소개하는 페이지입니다.</p><p class="font-credit">손글씨는 <a href="https://www.chilgok.go.kr/portal/contents.do?mId=0404070100" target="_blank" rel="noopener noreferrer">칠곡군의 칠곡할매 김영분체</a>를 사용했습니다.</p></div><a class="back-top" href="#home" aria-label="맨 위로">↑</a></footer>
   <dialog class="interest-dialog" id="interest-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><button class="dialog-close" aria-label="안내 닫기" data-close-dialog>×</button><img data-companion-image="decorative" src="assets/character-candidates/02-hodam.png" alt="" width="1024" height="1536"><span class="eyebrow">찾아와 주셔서 반가워요</span><h2 id="dialog-title">말동무챗은<br><span>지금 준비 중이에요.</span></h2><p id="dialog-description">가족을 떠올리며 찾아와 주셔서 감사해요.<br>더 편안한 말동무로 만날 수 있도록<br>차근차근 준비하고 있어요.</p><button class="pill primary" data-close-dialog autofocus>알겠어요</button><a class="quiet-link" href="#class-form" data-close-dialog>출시 소식 받기</a><small>소개된 모습과 내용은 출시 과정에서 달라질 수 있어요.</small></dialog>
-  <!-- [수업 원문] Pop up: 폼 저장 성공 후 표시할 내용입니다. -->
-  <div id="popup" style="display:none;">
-    <h1>감사합니다. </h1>
-    <p>이제는 우리는 같은 배를 탔습니다.  </p>
-  </div>
   <noscript><p class="noscript-note">말동무챗은 현재 준비 중입니다. 소개된 모습과 내용은 출시 과정에서 달라질 수 있어요.</p></noscript>
 
-  <!-- [Codex 연결 시작] 출처: https://class.handsomeys.com/codes.html
-       함수·변수·조건식은 수업 원문을 유지했습니다. 연결을 위해 바꾼 곳만 Codex 주석을 붙였습니다.
-       $.ajax 예제는 제외하고, 단계별로 반복된 방문 전송 예제는 최종 data로 한 번만 실행합니다. -->
-  <script>
-// [수업 원문] Cookie 다루기
-// 쿠키에서 값을 가져오는 함수
-function getCookieValue(name) {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) {
-        return parts.pop().split(";").shift();
-    }
-}
 
-// 쿠키에 값을 저장하는 함수
-function setCookieValue(name, value, days) {
-    let expires = "";
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getUVfromCookie() {
-    // 6자리 임의의 문자열 생성
-    const hash = Math.random().toString(36).substring(2, 8).toUpperCase();
-    // 쿠키에서 기존 해시 값을 가져옴
-    const existingHash = getCookieValue("user");
-    // 기존 해시 값이 없으면, 새로운 해시 값을 쿠키에 저장
-    if (!existingHash) {
-        setCookieValue("user", hash, 180); // 쿠키 만료일은 6개월 
-        return hash;
-    } else {
-        // 기존 해시 값이 있으면, 기존 값을 반환
-        return existingHash;
-    }
-}
-
-/* 수정 payload data -> id:getUVfromCookie() */
-
-// [수업 원문] Time Stamp
-// Sam pading value to start with 0. eg: 01, 02, .. 09, 10, ..
-function padValue(value) {
-    return (value < 10) ? "0" + value : value;
-}
-
-function getTimeStamp() {
-    const date = new Date();
-
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    const formattedDate = `${padValue(year)}-${padValue(month)}-${padValue(day)} ${padValue(hours)}:${padValue(minutes)}:${padValue(seconds)}`;
-
-    return formattedDate;
-}
-
-// [수업 원문] UTM 가져오기
-var queryString = location.search;
-const urlParams = new URLSearchParams(queryString);
-const utm = urlParams.get("utm")
-
-// [수업 원문] Device 가져오기
-var mobile = 'desktop';
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // true for mobile device
-    mobile = 'mobile';
-}
-
-$(document).ready(function () {
-    console.log("Document Ready");
-
-    // [Codex 연결] 수업 예제 주소만 기존 실습에서 사용한 본인의 배포 주소로 바꿉니다.
-    var addrScript = 'https://script.google.com/macros/s/AKfycbwKyA5uqY8L8gRc1wyxK_ihrfXGmX7XHKsyJ4XN3nOsk0bEhiQt8Qr6vI5Jb1ASrNwYAA/exec';
-
-    // [수업 원문] 최종 data: 쿠키 ID·주소·IP·유입 경로·시각·UTM·기기
-    /* data를 만들 땐 모든 field가 들어 있어야 함 */
-    var data = JSON.stringify({"id": getUVfromCookie(),
-                "landingUrl":window.location.href,
-                "ip":ip,
-                "referer":document.referrer,
-                "time_stamp":getTimeStamp(),
-                "utm":utm,
-                "device":mobile}
-                );
-
-    // [Codex 연결] 실제 시트 이름 visitors를 사용하고, URL로 전달할 data만 인코딩합니다.
-    axios.get(addrScript+'?action=insert&table=visitors&data='+encodeURIComponent(data))
-        .then(response => {
-            console.log(JSON.stringify(response));
-        })
-        .catch(error => {
-            if (error.response) {
-                // 서버가 2xx 범위를 벗어난 상태 코드로 응답한 경우
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // 요청이 전송되었지만 응답을 받지 못한 경우
-                console.log(error.request);
-            } else {
-                // 요청 설정 중에 오류가 발생한 경우
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
-        });
-
-    // [수업 원문 + 연결 표시] 버튼 클릭시 정보 전송
-    $("#submit").on("click", function () {
-        const email = $("#submit-email").val();
-        const advice = $("#submit-advice").val();
-
-        function validateEmail(email) {
-            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            return re.test(email);
-        }
-
-        if (email == '' || !validateEmail(email)) {
-            alert("이메일이 유효하지 않아 알림을 드릴 수가 없습니다. ");
-            return;
-        }
-
-        var finalData = JSON.stringify({
-            "id": getUVfromCookie(),
-            "email": email,
-            "advice": advice
-        })
-
-        // [Codex 연결] 수업의 Busy를 전송 시작·종료에 연결합니다.
-        $.busyLoadFull("show");
-        // [Codex 연결] 본인 주소 사용. &·+·#·줄바꿈이 데이터에서 깨지지 않도록 인코딩합니다.
-        axios.get(addrScript+'?action=insert&table=tab_final&data=' + encodeURIComponent(finalData))
-            .then(response => {
-                $.busyLoadFull("hide");
-                // [Codex 연결] 서버가 저장 성공을 확인한 경우에만 입력을 비우고 팝업을 엽니다.
-                // 2026-10-31: Apps Script doGet의 response().json(ret)를 배포 버전 2에 적용했습니다.
-                if (response.data.success !== true) {
-                    alert("저장 결과를 확인하지 못했습니다. 스프레드시트와 Apps Script 응답을 확인해 주세요.");
-                    return;
-                }
-                console.log(response.data.data);
-                alert(JSON.stringify(response));
-                $('#submit-email').val('');
-                $('#submit-advice').val('');
-                $.fn.simplePopup({ type: "html", htmlSelector: "#popup" });
-            })
-            .catch(error => {
-                // [Codex 연결] 전송 오류 때 로딩을 닫고, 입력 내용은 그대로 둡니다.
-                $.busyLoadFull("hide");
-                console.log(error);
-                alert("제출 결과를 확인하지 못했습니다. 입력 내용은 남아 있으니 스프레드시트를 확인해 주세요.");
-            });
-    });
-});
-  </script>
-  <!-- [Codex 연결 끝] -->
 </body>
 </html>
