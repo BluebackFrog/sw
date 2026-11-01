@@ -1,0 +1,24 @@
+Created: 2026-11-01
+Method: built-in ImageGen (image_gen.imagegen), image edit.
+Final asset: maldongmu-site/assets/grandfather-tv-watercolor.png
+Edit target: the same existing TV illustration, replaced at the user's request.
+Purpose: foreground TV partly obscures the grandfather; plainer, slightly shabby room.
+The same elderly man, check shirt, cotton trousers and restrained mood are retained.
+This room design supersedes the decorative room in grandparents-consistent-outfit.txt.
+
+Final prompt:
+Use case: identity-preserve and precise-object-edit.
+Asset type: existing watercolor illustration for the left side of a Korean companionship website.
+Input image 1 is the EDIT TARGET.
+
+Make two changes to this same painting:
+1. Reposition the foreground TELEVISION so the grandfather is PARTLY OCCLUDED behind it.
+2. Replace the overly decorated, comfortable-looking room with a much plainer, modest, slightly shabby older living room.
+
+COMPOSITION: retain a broad landscape 3:2 room view from behind the TV, looking toward the grandfather on the sofa. We must see the TV's REAR casing and stand, not its screen. Shift the TV farther right into the lower center-left foreground so its right edge actually overlaps the grandfather's silhouette. It should conceal roughly the lower-left quarter to third of his seated figure: part of his left forearm/lap and one knee or upper shin, with a small portion of lower torso behind the TV's upper-right area. His entire head, face, shoulders and most of his check-shirt chest remain visible ABOVE and to the right of the television. One hand and part of his other leg can remain visible beside the TV. This overlap should be unambiguous yet restrained; do not place the TV completely beside him, and do not cover his face. The TV screen faces him away from us. Keep natural depth and believable furniture scale; no giant television. He is still seated normally with uncrossed legs.
+
+ROOM: a small, sparsely furnished older Korean home, clean but showing years of ordinary use. Replace the plush bright sofa with a simple faded gray-beige fabric sofa with a modest low back, slightly sagging seat cushions and gently worn armrests. At most one plain faded cushion. Simplify the wall to a quiet, slightly uneven warm gray/off-white painted surface with subtle age discoloration. Replace the elaborate window treatment with a plain thin off-white curtain at an ordinary small window. Keep a simple low wooden TV table with slightly worn edges and a modest unadorned floor. REMOVE the lush plants, decorative table lamp and golden glow, picture frames, ornate sideboard, wall artwork, coordinated colorful pillows and plush rug. Leave real empty wall and floor areas instead of adding new ornaments. The room should feel modest and a little threadbare, not stylish, luxurious, picturesque or elaborately decorated. No rubbish, severe damage, peeling piles, extreme poverty or theatrical misery.
+
+INVARIANTS: preserve the same elderly Korean grandfather's recognizable face, white receding hair, very old age, muted sage-and-ivory CHECK SHIRT, beige COTTON TROUSERS and ordinary house slippers. His quiet neutral expression, slightly lowered shoulders and contemplative gaze convey subtle loneliness, not crying or dramatic sadness. No smile, extra people, phone or text.
+
+LIGHT AND STYLE: slightly dim soft daylight, muted desaturated gray, sage and beige, sufficient light to read his face. Remove the bright decorative golden ambient glow without making the room dark or ominous. Keep the same handmade transparent watercolor on warm ivory paper, loose soft facial brush marks rather than photographic skin, pigment blooms and delicate paper grain. Maintain the spacious horizontal framing and gentle irregular fading watercolor washes at the outer edges so the illustration blends into the cream webpage. No hard rectangular border, no anime, no vector outlines, no logo or watermark. Output the complete edited painting.
