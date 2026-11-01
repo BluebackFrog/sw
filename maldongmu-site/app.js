@@ -42,6 +42,8 @@ const sceneCharacter = $('#scene-character');
 const sceneArtworkCache = new Map();
 let artworkRequest = 0;
 let activeScene = -1;
+let sceneArtworkVisible = !('IntersectionObserver' in window);
+let closingArtworkVisible = !('IntersectionObserver' in window);
 function loadSceneArtwork(key) {
   if (sceneArtworkCache.has(key)) return sceneArtworkCache.get(key);
   const entry = {image: new Image(), url: `assets/character-scenes/phone-${key}.webp`, ready: false};
@@ -106,10 +108,19 @@ function setScene(index, force = false) {
   } else {
     quote.textContent = character.quotes[0];
   }
-  setSceneArtwork(activeCharacter, index);
+  if (sceneArtworkVisible) setSceneArtwork(activeCharacter, index);
   quote.classList.remove('scene-enter');
   requestAnimationFrame(() => quote.classList.add('scene-enter'));
   sceneButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
+}
+function updateClosingArtwork() {
+  if (!closingArtworkVisible) return;
+  const otherFriends = ['boksil', 'boksoon', 'hodam', 'deoksu', 'dodam'].filter(friend => friend !== activeCharacter);
+  $$('[data-closing-companion]').forEach((silhouette, index) => {
+    const friend = otherFriends[index];
+    silhouette.dataset.closingCompanion = friend;
+    silhouette.style.setProperty('--friend-art', `url("assets/optimized/${characters[friend].file.replace('.png', '.webp')}")`);
+  });
 }
 function selectCharacter(key, announce = false) {
   const character = characters[key];
@@ -117,17 +128,12 @@ function selectCharacter(key, announce = false) {
   activeCharacter = key;
   document.body.dataset.character = key;
   $$('[data-companion-image]').forEach(image => {
-    image.src = `assets/character-candidates/${character.file}`;
+    image.src = `assets/optimized/${character.file.replace('.png', '.webp')}`;
     image.width = character.width;
     image.height = character.height;
     image.alt = image.dataset.companionImage === 'decorative' ? '' : `${character.description} ${character.name}`;
   });
-  const otherFriends = ['boksil', 'boksoon', 'hodam', 'deoksu', 'dodam'].filter(friend => friend !== key);
-  $$('[data-closing-companion]').forEach((silhouette, index) => {
-    const friend = otherFriends[index];
-    silhouette.dataset.closingCompanion = friend;
-    silhouette.style.setProperty('--friend-art', `url("assets/character-candidates/${characters[friend].file}")`);
-  });
+  updateClosingArtwork();
   $('#friend-greeting').textContent = character.greeting;
   $('#friend-description').textContent = character.description;
   $('#friend-name').textContent = character.title;
@@ -137,10 +143,26 @@ function selectCharacter(key, announce = false) {
 }
 $$('[data-character-select]').forEach(button => {
   const key = button.dataset.characterSelect;
-  button.addEventListener('pointerenter', () => loadSceneArtwork(key));
-  button.addEventListener('focus', () => loadSceneArtwork(key));
+  button.addEventListener('pointerenter', () => { if (sceneArtworkVisible) loadSceneArtwork(key); });
+  button.addEventListener('focus', () => { if (sceneArtworkVisible) loadSceneArtwork(key); });
   button.addEventListener('click', () => selectCharacter(key, true));
 });
+// Lower sections must not compete with the first picture for mobile bandwidth.
+if ('IntersectionObserver' in window) {
+  const artworkObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    if (entry.target === stage) {
+      sceneArtworkVisible = true;
+      setSceneArtwork(activeCharacter, Math.max(0, activeScene));
+    } else {
+      closingArtworkVisible = true;
+      updateClosingArtwork();
+    }
+    artworkObserver.unobserve(entry.target);
+  }), {rootMargin: '500px'});
+  artworkObserver.observe(stage);
+  artworkObserver.observe($('.closing-friends'));
+}
 selectCharacter(activeCharacter);
 function sceneAnchor() {
   // 모바일에서는 고정된 휴대폰 아래에 보이는 설명을 기준으로 장면을 고릅니다.
