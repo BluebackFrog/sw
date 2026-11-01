@@ -1,0 +1,89 @@
+말동무챗 휴대폰 전체 배경 — 2026-11-01
+Mode: built-in image_gen; separate edit for each character.
+Output: maldongmu-site/assets/character-scenes/phone-{boksil,hodam,dodam,boksoon,deoksu}.webp
+Portrait 2x2 scene sheets. Only PNG-to-WebP web encoding after generation; no cropping or compositing.
+
+boksil
+Reference: maldongmu-site/assets/character-scenes/boksil.webp
+Prompt:
+Use case: identity-preserve / compositing.
+Edit target: the supplied four-panel scene sheet. Preserve the EXACT character design, clothing, illustration style and the four different poses. Recompose it for a tall phone screen with overlays.
+Output ONE PORTRAIT canvas, aspect ratio 2:3, divided into EXACTLY FOUR equal portrait tiles in a 2-by-2 grid. Thus each tile is also portrait 2:3. Tiles touch directly at the horizontal and vertical midpoints, with absolutely no borders, gutter, divider lines, words, numbers, labels or UI.
+CRITICAL GEOMETRY FOR EACH INDIVIDUAL TILE:
+- Paint continuous full scenery from the very top to the very bottom, edge-to-edge, no white or blank paper band.
+- Top 24% of the tile: ONLY softly detailed background wall/trees/sky, NO part of the character. A speech bubble will be overlaid here later in code. Do NOT draw that bubble.
+- The COMPLETE character including ALL hair, ears, horns, tails, hands, props and feet must fit within the central safe rectangle: x=18% through 82%, y=26% through 65% of each tile. Center character around x=50%, y=46%. The character is about 38% of tile height, so the full body is deliberately smaller than the reference. The feet end around y=65%. No close-up.
+- Bottom 33% of each tile: ONLY empty extended wooden floor/ground/rug, NO character parts or significant objects. Controls will be overlaid here later in code. Do NOT draw any controls.
+- Keep camera, environment, lighting and floor line identical in all four panels. Only the pose changes. Think of zooming out and extending the top and bottom of each original scene.
+POSE ORDER must match the original sheet exactly: top-left listening with relaxed posture; top-right gentle welcoming wave; bottom-left thoughtfully holding a small red apple for a word game; bottom-right calm attentive listening.
+Preserve the warm Korean storybook colored-pencil/watercolor illustration and brown contours. Quiet scenery lower contrast than the character. Do not redesign the character, do not add any characters, no phone mockup, no speech bubbles, no button panels, no text, no logos, no frames, no transparency.
+Character: the same golden-brown and cream dog Boksil with the red neckerchief, seated on its haunches, gestures with dog paws only.
+Environment: the same sunlit Korean house courtyard, wood porch, small plants and warm pale sandy ground.
+
+hodam
+Reference: maldongmu-site/assets/character-scenes/hodam.webp
+Prompt:
+Use case: identity-preserve / compositing.
+Edit target: the supplied four-panel scene sheet. Preserve the EXACT character design, clothing, illustration style and the four different poses. Recompose it for a tall phone screen with overlays.
+Output ONE PORTRAIT canvas, aspect ratio 2:3, divided into EXACTLY FOUR equal portrait tiles in a 2-by-2 grid. Thus each tile is also portrait 2:3. Tiles touch directly at the horizontal and vertical midpoints, with absolutely no borders, gutter, divider lines, words, numbers, labels or UI.
+CRITICAL GEOMETRY FOR EACH INDIVIDUAL TILE:
+- Paint continuous full scenery from the very top to the very bottom, edge-to-edge, no white or blank paper band.
+- Top 24% of the tile: ONLY softly detailed background wall/trees/sky, NO part of the character. A speech bubble will be overlaid here later in code. Do NOT draw that bubble.
+- The COMPLETE character including ALL hair, ears, horns, tails, hands, props and feet must fit within the central safe rectangle: x=18% through 82%, y=26% through 65% of each tile. Center character around x=50%, y=46%. The character is about 38% of tile height, so the full body is deliberately smaller than the reference. The feet end around y=65%. No close-up.
+- Bottom 33% of each tile: ONLY empty extended wooden floor/ground/rug, NO character parts or significant objects. Controls will be overlaid here later in code. Do NOT draw any controls.
+- Keep camera, environment, lighting and floor line identical in all four panels. Only the pose changes. Think of zooming out and extending the top and bottom of each original scene.
+POSE ORDER must match the original sheet exactly: top-left listening with relaxed posture; top-right gentle welcoming wave; bottom-left thoughtfully holding a small red apple for a word game; bottom-right calm attentive listening.
+Preserve the warm Korean storybook colored-pencil/watercolor illustration and brown contours. Quiet scenery lower contrast than the character. Do not redesign the character, do not add any characters, no phone mockup, no speech bubbles, no button panels, no text, no logos, no frames, no transparency.
+Character: the same orange Korean minhwa tiger Hodam with the cream belly and curved tail, seated on its haunches, gestures with tiger paws only.
+Environment: the same peaceful pine grove, softly layered green mountains, sparse rocks and warm pale ground.
+
+dodam
+Reference: maldongmu-site/assets/character-scenes/dodam.webp
+Prompt:
+Use case: identity-preserve / compositing.
+Edit target: the supplied four-panel scene sheet. Preserve the EXACT character design, clothing, illustration style and the four different poses. Recompose it for a tall phone screen with overlays.
+Output ONE PORTRAIT canvas, aspect ratio 2:3, divided into EXACTLY FOUR equal portrait tiles in a 2-by-2 grid. Thus each tile is also portrait 2:3. Tiles touch directly at the horizontal and vertical midpoints, with absolutely no borders, gutter, divider lines, words, numbers, labels or UI.
+CRITICAL GEOMETRY FOR EACH INDIVIDUAL TILE:
+- Paint continuous full scenery from the very top to the very bottom, edge-to-edge, no white or blank paper band.
+- Top 24% of the tile: ONLY softly detailed background wall/trees/sky, NO part of the character. A speech bubble will be overlaid here later in code. Do NOT draw that bubble.
+- The COMPLETE character including ALL hair, ears, horns, tails, hands, props and feet must fit within the central safe rectangle: x=18% through 82%, y=26% through 65% of each tile. Center character around x=50%, y=46%. The character is about 38% of tile height, so the full body is deliberately smaller than the reference. The feet end around y=65%. No close-up.
+- Bottom 33% of each tile: ONLY empty extended wooden floor/ground/rug, NO character parts or significant objects. Controls will be overlaid here later in code. Do NOT draw any controls.
+- Keep camera, environment, lighting and floor line identical in all four panels. Only the pose changes. Think of zooming out and extending the top and bottom of each original scene.
+POSE ORDER must match the original sheet exactly: top-left listening with relaxed posture; top-right gentle welcoming wave; bottom-left thoughtfully holding a small red apple for a word game; bottom-right calm attentive listening.
+Preserve the warm Korean storybook colored-pencil/watercolor illustration and brown contours. Quiet scenery lower contrast than the character. Do not redesign the character, do not add any characters, no phone mockup, no speech bubbles, no button panels, no text, no logos, no frames, no transparency.
+Character: the same friendly single-horned goblin Dodam in the cream shirt, blue vest and beige patched trousers, seated cross-legged.
+Environment: the same forest pavilion with wooden posts, leafy woodland behind, and warm wooden floor.
+
+boksoon
+Reference: maldongmu-site/assets/character-scenes/boksoon.webp
+Prompt:
+Use case: identity-preserve / compositing.
+Edit target: the supplied four-panel scene sheet. Preserve the EXACT character design, clothing, illustration style and the four different poses. Recompose it for a tall phone screen with overlays.
+Output ONE PORTRAIT canvas, aspect ratio 2:3, divided into EXACTLY FOUR equal portrait tiles in a 2-by-2 grid. Thus each tile is also portrait 2:3. Tiles touch directly at the horizontal and vertical midpoints, with absolutely no borders, gutter, divider lines, words, numbers, labels or UI.
+CRITICAL GEOMETRY FOR EACH INDIVIDUAL TILE:
+- Paint continuous full scenery from the very top to the very bottom, edge-to-edge, no white or blank paper band.
+- Top 24% of the tile: ONLY softly detailed background wall/trees/sky, NO part of the character. A speech bubble will be overlaid here later in code. Do NOT draw that bubble.
+- The COMPLETE character including ALL hair, ears, horns, tails, hands, props and feet must fit within the central safe rectangle: x=18% through 82%, y=26% through 65% of each tile. Center character around x=50%, y=46%. The character is about 38% of tile height, so the full body is deliberately smaller than the reference. The feet end around y=65%. No close-up.
+- Bottom 33% of each tile: ONLY empty extended wooden floor/ground/rug, NO character parts or significant objects. Controls will be overlaid here later in code. Do NOT draw any controls.
+- Keep camera, environment, lighting and floor line identical in all four panels. Only the pose changes. Think of zooming out and extending the top and bottom of each original scene.
+POSE ORDER must match the original sheet exactly: top-left listening with relaxed posture; top-right gentle welcoming wave; bottom-left thoughtfully holding a small red apple for a word game; bottom-right calm attentive listening.
+Preserve the warm Korean storybook colored-pencil/watercolor illustration and brown contours. Quiet scenery lower contrast than the character. Do not redesign the character, do not add any characters, no phone mockup, no speech bubbles, no button panels, no text, no logos, no frames, no transparency.
+Character: the same elderly Korean grandmother Boksoon with silver permed hair, cream floral blouse, burgundy floral vest, brown trousers and purple shoes, standing.
+Environment: the same modest sunlit living room, cream walls, wooden window, sage cushions, small plants and a warm wooden floor with a simple rug.
+
+deoksu
+Reference: maldongmu-site/assets/character-scenes/deoksu.webp
+Prompt:
+Use case: identity-preserve / compositing.
+Edit target: the supplied four-panel scene sheet. Preserve the EXACT character design, clothing, illustration style and the four different poses. Recompose it for a tall phone screen with overlays.
+Output ONE PORTRAIT canvas, aspect ratio 2:3, divided into EXACTLY FOUR equal portrait tiles in a 2-by-2 grid. Thus each tile is also portrait 2:3. Tiles touch directly at the horizontal and vertical midpoints, with absolutely no borders, gutter, divider lines, words, numbers, labels or UI.
+CRITICAL GEOMETRY FOR EACH INDIVIDUAL TILE:
+- Paint continuous full scenery from the very top to the very bottom, edge-to-edge, no white or blank paper band.
+- Top 24% of the tile: ONLY softly detailed background wall/trees/sky, NO part of the character. A speech bubble will be overlaid here later in code. Do NOT draw that bubble.
+- The COMPLETE character including ALL hair, ears, horns, tails, hands, props and feet must fit within the central safe rectangle: x=18% through 82%, y=26% through 65% of each tile. Center character around x=50%, y=46%. The character is about 38% of tile height, so the full body is deliberately smaller than the reference. The feet end around y=65%. No close-up.
+- Bottom 33% of each tile: ONLY empty extended wooden floor/ground/rug, NO character parts or significant objects. Controls will be overlaid here later in code. Do NOT draw any controls.
+- Keep camera, environment, lighting and floor line identical in all four panels. Only the pose changes. Think of zooming out and extending the top and bottom of each original scene.
+POSE ORDER must match the original sheet exactly: top-left listening with relaxed posture; top-right gentle welcoming wave; bottom-left thoughtfully holding a small red apple for a word game; bottom-right calm attentive listening.
+Preserve the warm Korean storybook colored-pencil/watercolor illustration and brown contours. Quiet scenery lower contrast than the character. Do not redesign the character, do not add any characters, no phone mockup, no speech bubbles, no button panels, no text, no logos, no frames, no transparency.
+Character: the same elderly Korean grandfather Deoksu with silver side-parted hair, round glasses, blue cardigan, brown trousers and brown shoes, standing.
+Environment: the same sunlit Korean hanok porch, wooden posts, paper lattice doors and warm wooden floor, with quiet garden glimpses at the sides.

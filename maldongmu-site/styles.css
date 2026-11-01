@@ -329,22 +329,26 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   font-weight:750
 }
 .phone-content {
-  display:flex;
-  flex-direction:column;
+  position:relative;
   flex:1;
   min-height:0;
-  padding:12px 12px 24px
+  padding:0;
+  overflow:hidden
 }
 .mock-response {
   --bubble-border:#ded6c4;
-  position:relative;
+  position:absolute;
+  z-index:2;
+  top:10px;
+  left:10px;
+  right:10px;
   display:flow-root;
-  flex-shrink:0;
-  background:#f4eddd;
+  background:#fffcf7ed;
   border:1px solid var(--bubble-border);
   border-radius:18px;
-  padding:12px 14px;
-  margin-bottom:15px;
+  padding:10px 12px;
+  margin:0;
+  box-shadow:0 3px 12px #3a302018;
   transition:background .3s,border-color .3s
 }
 .mock-response::after {
@@ -374,17 +378,15 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   color:#5c6a4b
 }
 .mock-response p {
-  font-size:18px;
+  font-size:17px;
   font-weight:550;
-  line-height:1.6;
+  line-height:1.45;
   letter-spacing:-.03em;
   white-space:pre-line
 }
 .mock-room {
-  position:relative;
-  flex:1;
-  min-height:0;
-  border-radius:14px;
+  position:absolute;
+  inset:0;
   overflow:hidden;
   isolation:isolate;
   background:#efe7d5
@@ -398,7 +400,8 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   align-items:center;
   width:auto;
   height:100%;
-  aspect-ratio:3 / 2;
+  min-width:100%;
+  aspect-ratio:2 / 3;
   margin:0;
   transform:translateX(-50%);
   background-color:#efe7d5;
@@ -407,25 +410,27 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   justify-content:center
 }
 .mock-character img {
-  width:156px;
-  height:156px;
+  position:absolute;
+  top:26%;
+  width:70%;
+  height:40%;
   object-fit:contain
 }
 .mock-character[data-artwork="ready"] > img { visibility:hidden; }
 .mock-controls {
   position:absolute;
   z-index:1;
-  left:8px;
-  right:8px;
-  bottom:10px;
+  left:10px;
+  right:10px;
+  bottom:16px;
   display:grid;
-  grid-template-columns:1fr 80px 1fr;
-  grid-template-rows:40px 40px;
-  gap:6px;
-  padding:10px 8px;
+  grid-template-columns:1fr 76px 1fr;
+  grid-template-rows:36px 36px 22px;
+  gap:5px;
+  padding:7px 8px;
   border:1px solid #ffffffcf;
   border-radius:10px;
-  background:#fffcf7c9;
+  background:#fffcf7c4;
   box-shadow:0 6px 20px #2635232b;
   backdrop-filter:blur(5px);
   -webkit-backdrop-filter:blur(5px);
@@ -453,8 +458,9 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  width:80px;
-  height:80px;
+  width:72px;
+  height:72px;
+  justify-self:center;
   border-radius:50%;
   background:var(--green);
   color:#fff;
@@ -487,21 +493,23 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   grid-row:2
 }
 .mock-keyboard {
+  grid-column:2;
+  grid-row:3;
   display:flex;
   align-items:center;
   justify-content:center;
   align-self:center;
-  flex-shrink:0;
-  min-height:34px;
-  padding:6px 14px;
+  min-height:22px;
+  padding:2px 3px;
   border:1px solid #d1d7c5;
-  border-radius:10px;
-  background:#f8f4e8;
+  border-radius:6px;
+  background:#fffdf7b3;
   text-align:center;
-  font-size:13px;
+  font-size:10px;
+  white-space:nowrap;
   font-weight:550;
   color:#5d6a4b;
-  margin-top:8px
+  margin:0
 }
 .device-stage[data-highlight="mic"] .mock-mic {
   box-shadow:0 0 0 5px #8ba86e40;
@@ -509,7 +517,7 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
 }
 .device-stage[data-highlight="response"] .mock-response {
   --bubble-border:#9fa97c;
-  background:#f1edda
+  background:#f1eddaed
 }
 .device-stage[data-highlight="presets"] .mock-preset {
   border-color:#919c6e;
@@ -584,11 +592,10 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .closing-friends { width: min(480px, 100%); height: clamp(210px, 62vw, 300px); justify-self: center; }
 }
 
-/* 손글씨는 공감 제목 두 줄과 초대 문구의 제목에만 사용합니다. */
+/* 손글씨는 “오늘은 이런 이야기를 했어.” 제목에만 사용합니다. */
 .brand { font-weight: 750; letter-spacing: -.045em; }
 .brand-mark { position: relative; display: block; flex-shrink: 0; width: 64px; height: 40px; margin-right: 8px; overflow: hidden; }
 .brand-mark img { position: absolute; width: 64px; height: 64px; max-width: none; top: -12px; left: 0; }
-.intro-copy h2,
 .invitation h2 {
   font-family: 'Chilgok KimYeongBun', Pretendard, 'Malgun Gothic', sans-serif;
   font-weight: 400;

@@ -44,7 +44,7 @@ let artworkRequest = 0;
 let activeScene = -1;
 function loadSceneArtwork(key) {
   if (sceneArtworkCache.has(key)) return sceneArtworkCache.get(key);
-  const entry = {image: new Image(), url: `assets/character-scenes/${key}.webp`, ready: false};
+  const entry = {image: new Image(), url: `assets/character-scenes/phone-${key}.webp`, ready: false};
   entry.image.decoding = 'async';
   entry.image.src = entry.url;
   entry.promise = entry.image.decode().then(() => {
@@ -74,6 +74,7 @@ function setSceneArtwork(key, index) {
       return;
     }
     sceneCharacter.style.backgroundImage = `url("${entry.url}")`;
+    sceneCharacter.style.aspectRatio = `${entry.image.naturalWidth} / ${entry.image.naturalHeight}`;
     sceneCharacter.style.backgroundPosition = `${(index % 2) * 100}% ${Math.floor(index / 2) * 100}%`;
     sceneCharacter.dataset.artwork = 'ready';
     sceneCharacter.dataset.pose = scenes[index].name;
