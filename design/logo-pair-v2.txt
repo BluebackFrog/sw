@@ -1,0 +1,19 @@
+말동무챗 4번 로고 수정안
+Mode: built-in image_gen image editing; transparent background preserved.
+Output: maldongmu-site/assets/logo-candidates/04-together-v2.png
+Reference: maldongmu-site/assets/logo-candidates/04-together.png
+
+First edit prompt:
+Use case: precise-object-edit / logo-brand.
+Edit target: the supplied transparent icon of the smiling Korean grandmother and grandfather together.
+Make ONLY a small scale and spacing revision to this exact logo:
+1. Keep both existing faces, the grandmother on the left and the grandfather on the right. Preserve their identities, happy expressions, hair shapes, glasses, head tilts, dark green contours, soft cream/peach/terracotta colors, and illustration style.
+2. Reduce EACH head to about 80% of its current size on the same square transparent canvas.
+3. Separate the heads so their hair, ears and cheeks no longer touch or overlap. There must be a narrow, visible transparent gap between the nearest outlines, about 3% of the whole canvas width. They should still feel like a close pair. Reconstruct only the tiny previously hidden edge of the heads as needed.
+4. Center the pair horizontally and vertically as a single balanced unit. The complete pair should occupy approximately 80% of the canvas width and 50% of the canvas height, with generous transparent margin above and below. Both faces should be equally visually prominent.
+No text or wordmark, no additional shapes, no background, no shadow, no badge, no new decorative details. Maintain genuine alpha transparency. This is the same logo with smaller, slightly separated faces, not a redesign.
+
+Spacing refinement prompt:
+Use case: precise-object-edit.
+Edit the supplied two-face transparent logo. Change ONLY the spacing between the grandmother head on the left and grandfather head on the right. Preserve both faces exactly, their existing smaller scale, expressions, outlines, colors, details, head tilts, and vertical placement.
+At present their ears nearly touch in the middle. Move the complete grandmother head LEFT and the complete grandfather head RIGHT until there is a clearly empty transparent vertical strip, at least 4% of the total canvas width, between the nearest points of their outlines. Neither hair, ears, cheeks nor outlines may touch. The separation should remain visible when the whole icon is displayed just 90px wide. Keep the gap modest, about 5px at that display size. Keep both complete heads inside the square canvas with margins on all sides, no cropping. Maintain genuine transparent alpha background. No new drawing elements, no text, no wordmark, no shadows.

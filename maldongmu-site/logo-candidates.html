@@ -26,7 +26,7 @@
         <span class="card-logo"><span class="logo"><span class="logo-icon"><img src="assets/logo-candidates/01-boksil.png" alt="웃으며 고개를 기울인 강아지"></span><span class="wordmark">말동무<em>챗</em></span></span></span>
         <span class="description">편하게 말을 걸고 싶은 친구 같은 인상</span>
       </button>
-      <button class="candidate" type="button" data-id="02-boksoon" data-name="복순 할머니" aria-pressed="true">
+      <button class="candidate" type="button" data-id="02-boksoon" data-name="복순 할머니" aria-pressed="false">
         <span class="card-top"><span class="name"><span class="number">02</span>복순 할머니</span><span class="selection" aria-hidden="true">✓</span></span>
         <span class="card-logo"><span class="logo"><span class="logo-icon"><img src="assets/logo-candidates/02-boksoon.png" alt="활짝 웃는 은발의 할머니"></span><span class="wordmark">말동무<em>챗</em></span></span></span>
         <span class="description">반갑게 맞아주는 할머니의 따뜻한 인상</span>
@@ -36,15 +36,15 @@
         <span class="card-logo"><span class="logo"><span class="logo-icon"><img src="assets/logo-candidates/03-deoksu.png" alt="둥근 안경을 쓰고 웃는 할아버지"></span><span class="wordmark">말동무<em>챗</em></span></span></span>
         <span class="description">이야기를 잘 들어줄 것 같은 편안한 인상</span>
       </button>
-      <button class="candidate" type="button" data-id="04-together" data-name="할머니와 할아버지" aria-pressed="false">
+      <button class="candidate" type="button" data-id="04-together" data-name="할머니와 할아버지" aria-pressed="true">
         <span class="card-top"><span class="name"><span class="number">04</span>할머니와 할아버지</span><span class="selection" aria-hidden="true">✓</span></span>
-        <span class="card-logo"><span class="logo"><span class="logo-icon pair"><img src="assets/logo-candidates/04-together.png" alt="얼굴을 나란히 맞대고 웃는 할머니와 할아버지"></span><span class="wordmark">말동무<em>챗</em></span></span></span>
+        <span class="card-logo"><span class="logo"><span class="logo-icon pair"><img src="assets/logo-candidates/04-together-v2.png" alt="살짝 떨어져 나란히 웃는 할머니와 할아버지"></span><span class="wordmark">말동무<em>챗</em></span></span></span>
         <span class="description">어르신을 위한 서비스라는 의미가 가장 직접적인 인상</span>
       </button>
     </div>
-    <div class="preview-title"><h2>사이트 상단에 놓으면</h2><p id="selected-label" aria-live="polite">02 · 복순 할머니</p></div>
+    <div class="preview-title"><h2>사이트 상단에 놓으면</h2><p id="selected-label" aria-live="polite">04 · 할머니와 할아버지</p></div>
     <section class="site-preview" aria-label="선택한 로고의 사이트 적용 예시">
-      <div class="site-header"><span class="logo"><span class="logo-icon" id="preview-icon"><img id="preview-image" src="assets/logo-candidates/02-boksoon.png" alt="복순 할머니 로고"></span><span class="wordmark">말동무<em>챗</em></span></span><div class="site-nav" aria-hidden="true"><span>우리의 마음</span><span>말동무 소개</span><span class="nav-cta">우리 가족에게 소개하기 ↗</span></div></div>
+      <div class="site-header"><span class="logo"><span class="logo-icon pair" id="preview-icon"><img id="preview-image" src="assets/logo-candidates/04-together-v2.png" alt="할머니와 할아버지 로고"></span><span class="wordmark">말동무<em>챗</em></span></span><div class="site-nav" aria-hidden="true"><span>우리의 마음</span><span>말동무 소개</span><span class="nav-cta">우리 가족에게 소개하기 ↗</span></div></div>
       <div class="mini-hero"><div class="mini-copy"><p>통화를 끊고 나서도 마음이 쓰인다면</p><h2>혼자 계신 시간에도<br>말벗이 되어드리는<br><span>채팅 앱, 말동무챗.</span></h2></div><img src="assets/grandparents-watercolor-wide.png" alt="휴대폰을 보며 함께 웃는 할머니와 할아버지"></div>
     </section>
     <p class="footnote">로고 후보 비교용 페이지입니다. 카드 선택은 이 페이지의 미리보기에만 반영됩니다.</p>
@@ -54,7 +54,7 @@
     cards.forEach(card => card.addEventListener('click', () => {
       cards.forEach(item => item.setAttribute('aria-pressed', String(item === card)));
       const image = document.getElementById('preview-image');
-      image.src = 'assets/logo-candidates/' + card.dataset.id + '.png';
+      image.src = card.querySelector('img').getAttribute('src');
       image.alt = card.dataset.name + ' 로고';
       document.getElementById('preview-icon').classList.toggle('pair', card.dataset.id === '04-together');
       document.getElementById('selected-label').textContent = card.dataset.id.slice(0, 2) + ' · ' + card.dataset.name;
