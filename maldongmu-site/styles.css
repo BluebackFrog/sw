@@ -118,7 +118,7 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   grid-row: 2;
 }
 .intro .intro-copy h2 {
-  font-size: clamp(30px, 2.8vw, 40px);
+  font-size: clamp(36px, 3.3vw, 47px);
   line-height: 1.35;
   margin-bottom: 18px;
 }
@@ -174,7 +174,7 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .intro > .wrap { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
   .intro .section-top { grid-column: 1; }
   .intro-grid > .intro-copy { grid-column: 1; }
-  .intro .intro-copy h2 { font-size: clamp(28px, 7.6vw, 32px); margin-bottom: 16px; }
+  .intro .intro-copy h2 { font-size: clamp(33px, 9vw, 38px); margin-bottom: 16px; }
   .intro-scene { grid-column: 1; grid-row: 3; max-width: 680px; }
   .intro .thoughts { grid-template-columns: 1fr; }
   .intro .thought br { display: none; }
@@ -563,11 +563,10 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   .device-caption { top: 12px; font-size: 12px; }
 }
 
-/* 손글씨는 가족을 떠올리는 짧은 문장에만 사용합니다. */
+/* 손글씨는 공감 제목 두 줄과 초대 문구의 제목에만 사용합니다. */
 .brand { font-weight: 750; letter-spacing: -.045em; }
 .brand svg { width: 40px; height: 40px; margin-right: 8px; }
-.intro-copy h2 > span,
-.intro .thought,
+.intro-copy h2,
 .invitation h2 {
   font-family: 'Chilgok KimYeongBun', Pretendard, 'Malgun Gothic', sans-serif;
   font-weight: 400;
@@ -575,11 +574,11 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
   font-synthesis: none;
   letter-spacing: 0;
 }
-.intro-copy h2 > span { font-size: 1.18em; color: #626e55; }
+.intro-copy h2 > span { font-size: inherit; color: #626e55; }
 .intro .thought {
-  font-size: clamp(25px, 2.2vw, 29px);
-  line-height: 1.45;
-  color: #58634f;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #646e5a;
 }
 .invitation h2 { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.5; }
 .footer-notes { flex: 1; min-width: 0; }
@@ -587,7 +586,6 @@ body{--friend-surface:#e2cca4}body[data-character="boksil"]{--friend-surface:#e9
 .font-credit a { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 799px) {
   .brand svg { width: 36px; height: 36px; margin-right: 7px; }
-  .intro .thought { font-size: 27px; }
   .invitation h2 { font-size: clamp(30px, 7.6vw, 42px); }
   .footer-notes { flex-basis: 100%; order: 3; }
 }

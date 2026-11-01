@@ -20,7 +20,7 @@ https://www.chilgok.go.kr/common/jsp/common/contentFileDownload.jsp?path=/portal
 ※ 예) 이 인쇄물(본문)은 칠곡할매글꼴을 사용하여 디자인 되었습니다.
 
 이 프로젝트의 사용:
-- 칠곡할매 김영분체 Regular를 공감 문구와 인용문에 사용합니다.
+- 칠곡할매 김영분체 Regular를 공감 제목 두 줄과 초대 문구의 제목에 사용합니다.
 - 사이트 하단에 글꼴명, 저작권자, 공식 소개 링크를 표기했습니다.
 - 공식 Chilgok_kyb.ttf의 모든 글자를 유지하고 WOFF2로 무손실 압축했습니다.
   글자 추가/삭제, 윤곽 변경, 굵기 합성은 하지 않습니다.
