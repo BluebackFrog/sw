@@ -135,10 +135,10 @@ node scripts/experiment-report.cjs --from "2026-11-01T00:00:00+09:00" --to "2026
 
 이 저장소를 Netlify에 연결할 때 배포 브랜치는 `main`, 배포 폴더는 `maldongmu-site`를 사용합니다. 별도 빌드 명령은 필요하지 않으며 배포 폴더는 `netlify.toml`에 설정되어 있습니다.
 
-공개 사이트: https://lively-bubblegum-3768ab.netlify.app/
+공개 사이트: https://maldongmu-chat.netlify.app/
 
 2026-11-01 21:37(한국시간)에 현재 로컬 사이트의 파일 37개를 기존 프로젝트에 수동 배포했습니다. 배포 ID는 `6ae73272567e132ab7209066`입니다. 공개 파일은 원본과 일치하며 HTML 두 개에는 Netlify가 안내 주석과 배지를 자동 추가합니다. 공개 주소에서 PC·모바일 화면, 다섯 캐릭터의 총 20개 장면, 신청 흐름을 검사했습니다. 실제 테스트 신청의 DB 저장, 방문 ID 연결, 실험 집계 제외도 확인했습니다.
 
-에브리타임의 할머니 할아버지 버전에는 `https://lively-bubblegum-3768ab.netlify.app/?utm=everytime_grandparents`를 사용합니다. 실험 시작·종료 시각은 아직 정하지 않았으므로 게시 전에 고정합니다. 개인 점검에는 위의 `test=1` 링크를 사용하며, 실제 홍보 링크에는 `test=1`을 넣지 않습니다.
+에브리타임의 할머니 할아버지 버전에는 `https://maldongmu-chat.netlify.app/?utm=everytime_grandparents`를 사용합니다. 실험 시작·종료 시각은 아직 정하지 않았으므로 게시 전에 고정합니다. 개인 점검에는 위의 `test=1` 링크를 사용하며, 실제 홍보 링크에는 `test=1`을 넣지 않습니다.
 
 외부 커뮤니티에는 위의 공개 주소를 공유합니다. 커뮤니티별 유입 구분에는 `?utm=indietalk`처럼 `utm` 값을 붙일 수 있습니다. Live Server의 `localhost` 또는 `127.0.0.1` 주소는 외부 공유용이 아닙니다.
