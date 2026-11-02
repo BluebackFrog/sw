@@ -62,7 +62,7 @@
   function saveVisit() {
     if (visitSaved) return Promise.resolve();
     if (visitPending) return visitPending;
-    visitPending = ipReady.then(ip => insert('xyz_visitors', {
+    visitPending = ipReady.then(ip => insert('visitors', {
       ...common, time_stamp: new Date().toISOString(), landingUrl: location.href,
       referer: document.referrer, device: /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ? 'mobile' : 'desktop', ip
     })).then(() => { visitSaved = true; }).finally(() => { visitPending = null; });
@@ -90,7 +90,7 @@
     status.textContent = '';
     try {
       await saveVisit();
-      await insert('xyz_signups', { ...common, time_stamp: new Date().toISOString(), email: email.value, advice: advice.value.trim() });
+      await insert('tab_final', { ...common, time_stamp: new Date().toISOString(), email: email.value, advice: advice.value.trim() });
       submitted = true;
       if (!isTest) writeStorage('localStorage', `${storageKey}:submitted`, '1');
       form.reset();

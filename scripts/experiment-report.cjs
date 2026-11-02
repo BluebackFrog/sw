@@ -41,7 +41,7 @@ async function main() {
     if (body.success !== true || !Array.isArray(body.data)) throw new Error(`${table} 응답 확인 필요`);
     return body.data;
   }
-  const [visits, signups] = await Promise.all([read('xyz_visitors'), read('xyz_signups')]);
+  const [visits, signups] = await Promise.all([read('visitors'), read('tab_final')]);
   const result = summarize(visits, signups, options);
   console.log(`실험: ${EXPERIMENT}\n기간: ${options.from} 이상 ~ ${options.to} 미만\n홍보 유입: ${options.campaigns.join(', ')}`);
   console.log(`고유 방문자 N: ${result.visitors}\n신청 완료자 S: ${result.signups}\n신청률: ${result.rate === null ? '집계할 방문자 없음' : (100 * result.rate).toFixed(2) + '%'}`);
