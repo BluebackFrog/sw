@@ -15,7 +15,7 @@
 ## 파일 구성
 
 - `maldongmu-site/index.html`: 화면과 출시 소식 신청 폼
-- `maldongmu-site/signup.js`: 쿠키 ID, 방문 기록과 이메일 신청 저장
+- `maldongmu-site/signup.js`: 쿠키 ID, 방문 기록, 소개 의향 설문과 이메일 신청 저장
 - `scripts/experiment-report.cjs`: 실험 기간과 홍보 유입별 고유 방문자·신청자 집계
 - `maldongmu-site/styles.css`: 화면 스타일
 - `maldongmu-site/app.js`: 캐릭터 선택과 화면 동작
@@ -99,17 +99,19 @@ GitHub는 코드, Netlify는 공개 사이트, Apps Script는 요청 처리, Goo
 방문자의 브라우저가 Google Apps Script 웹 앱으로 요청을 보내면, Apps Script가 스프레드시트에 행을 추가합니다.
 
 - `visitors`: `id`, `landingUrl`, `ip`, `referer`, `time_stamp`, `utm`, `device`, `experiment_id`, `is_test`
-- `tab_final`: `id`, `email`, `advice`, `experiment_id`, `time_stamp`, `utm`, `is_test`
+- `tab_final`: `id`, `email`, `advice`, `experiment_id`, `time_stamp`, `utm`, `is_test`, `response_type`, `recommendation`
 
 연결 주소는 `signup.js`의 `endpoint`에 있습니다. Apps Script는 탭의 첫 행에 있는 열 이름에 맞춰 데이터를 저장하므로 위 열 이름을 임의로 바꾸지 않습니다. 방문과 신청은 기존 `visitors`, `tab_final` 두 탭에서 관리합니다. 이미 열린 페이지가 `xyz_visitors`, `xyz_signups`로 요청해도 서버에서 각각 기존 탭으로 연결합니다. 서버 배포 주소는 유지하며 시각은 UTC ISO 문자열로 저장합니다. 실제 IP와 이메일 저장 방식도 유지합니다.
 
-이메일만 필수이며 의견은 선택입니다. 서버의 `success: true`를 확인한 뒤 신청 완료를 표시합니다. 실패하면 입력을 보존하고 재시도할 수 있습니다. 전송 중에는 버튼을 잠그며 성공 후 같은 실험·브라우저에서 반복 신청을 막습니다. 자동 메일 발송은 연결하지 않았습니다.
+설문과 이메일 신청은 독립적으로 저장합니다. 설문은 이메일 없이 버튼 한 번으로 응답할 수 있습니다. 이메일 신청 폼에서는 이메일만 필수이며 의견은 선택입니다. 서버의 `success: true`를 확인한 뒤 완료를 표시합니다. 실패하면 다시 시도할 수 있습니다. 전송 중에는 버튼을 잠그며 성공 후 같은 실험·브라우저에서 반복 제출을 막습니다. 자동 메일 발송은 연결하지 않았습니다.
 
-### 이메일 신청률 가설과 집계
+`response_type=survey`인 행의 `recommendation`은 `yes`(소개하고 싶어요), `unsure`(잘 모르겠어요), `no`(아니요)입니다. 설문 행의 이메일과 의견은 빈칸입니다. 이메일 신청은 `response_type=email`, `recommendation`은 빈칸으로 저장합니다. 같은 방문자가 둘 다 제출하면 같은 `id`의 두 행이 생기며 각각 별도로 집계합니다. Apps Script 버전 4는 이전 페이지에서 보내는 이메일 요청에 새 열의 기본값을 채우므로 기존 요청도 유지됩니다.
+
+### 기존 이메일 신청률 가설과 집계
 
 가설: **실험 기간에 지정한 홍보 링크로 들어온 고유 방문자의 10% 이상은 말동무챗 출시 알림을 받기 위해 이메일 신청을 완료할 것이다.**
 
-배포 후 홍보 전에 실험 시작·종료 시각과 사용할 `utm` 값을 정합니다. 예를 들어 홍보 링크 끝에 `?utm=community1`을 붙입니다. 실험 구분은 `email-signup-v1`이며 다음 실험에서는 `signup.js`와 집계 스크립트의 실험 ID를 함께 바꿉니다.
+실험 시작·종료 시각과 사용할 `utm` 값을 지정합니다. 예를 들어 홍보 링크 끝에 `?utm=community1`을 붙입니다. 설문 도입 전 실험 구분은 `email-signup-v1`이며 기존 결과는 그대로 보존합니다. 집계 명령의 기본 실험도 이 이전 실험입니다.
 
 - 분모 N: 해당 실험·기간에 지정한 `utm`으로 방문한 고유 ID 수.
 - 분자 S: 그 방문자 중 같은 기간에 이메일 신청이 저장된 고유 ID 수. 방문 기록보다 앞선 신청은 제외합니다.
@@ -128,6 +130,27 @@ node scripts/experiment-report.cjs --from "2026-11-01T00:00:00+09:00" --to "2026
 출력된 N과 S를 [수업의 비율 검정 코드](https://class.handsomeys.com/a_b_test_proportion.html)에 입력합니다. 관측 신청률과 통계적 검정 결과는 구분해 제출하며, 유의하지 않다는 이유만으로 ‘10% 이상임을 입증했다’고 해석하지 않습니다. 집계 로직 확인은 `node --test scripts/experiment-report.test.cjs`로 실행합니다.
 
 공개 사이트의 화면·폼 확인은 `?test=1&utm=qa-check`를 붙여 접속합니다. 같은 탭에서는 테스트 구분이 유지되며 `?test=0`으로 해제할 수 있습니다. 테스트 신청은 새로고침 후 다시 시도할 수 있습니다. 로컬 접속은 항상 테스트입니다. 휴대폰에서 확인할 때도 이 테스트 링크를 사용합니다.
+
+### 소개 의향 설문 가설과 집계
+
+2026-11-02 17:35(KST)에 공개 사이트에 적용했습니다. Netlify 배포 ID는 `6ae84b495c2cb72d83f6bc18`이며 Apps Script 버전 4와 연결됩니다. 세 가지 설문 응답과 이메일 별도 저장을 실제로 확인했고 이번 검증에서 생성한 테스트 행은 정리했습니다.
+
+가설: **설문 도입 이후 실험 기간에 지정한 홍보 링크로 들어온 고유 방문자의 10% 이상이 부모님이나 할머니 할아버지께 말동무챗을 소개하고 싶다고 응답할 것이다.**
+
+- 새 실험 ID는 `family-recommendation-v1`입니다. 새 페이지의 방문·설문·이메일 신청에 공통으로 기록합니다. 이전 이메일 실험의 방문을 새 설문의 분모에 섞지 않습니다.
+- 분모 N은 해당 실험·기간·홍보 유입의 고유 방문자 전체이며 미응답자도 포함합니다.
+- 분자 S는 해당 방문자 중 같은 기간에 `yes` 응답이 저장된 고유 ID 수입니다. 재전송 행이 있으면 방문 이후의 첫 유효 응답만 사용합니다.
+- `unsure`, `no`, 미응답은 긍정 응답으로 세지 않습니다. 이메일 신청은 별도 보조 지표로 출력합니다.
+- 이 가설은 소개 의향에 대한 응답을 측정합니다. 실제 사용·추천·결제 행동을 의미하지 않습니다.
+- 기존 쿠키 ID를 사용하며 새 탭은 만들지 않습니다. 쿠키·저장소 삭제와 여러 기기의 동일인 구분은 제한됩니다.
+
+아래 기간은 실행 예시이며 실제 종료 시각과 유입 값으로 바꿉니다. 새 실험 ID로 필터링하므로 도입 전 방문 기록은 제외됩니다.
+
+```sh
+node scripts/experiment-report.cjs --from "2026-11-02T00:00:00+09:00" --to "2026-11-09T00:00:00+09:00" --utm "everytime,indietalk,threads" --experiment family-recommendation-v1
+```
+
+수업의 비율 검정에는 출력된 **설문 고유 방문자 N과 긍정 응답자 S**를 사용합니다. 통계 검정의 종료 시각은 결과를 보며 반복해서 바꾸지 않고 정해 둡니다. 저장·재시도·중복 방지와 집계 테스트는 `node --test scripts/signup.test.cjs scripts/experiment-report.test.cjs`로 실행합니다.
 
 ## Netlify 배포
 

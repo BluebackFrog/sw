@@ -1,8 +1,8 @@
-/* 수업의 쿠키 ID + Apps Script insert 방식을 이메일 신청률 실험에 맞춰 연결합니다. */
+/* 같은 방문 ID로 소개 의향 설문과 이메일 신청을 각각 저장합니다. */
 (() => {
   'use strict';
   const endpoint = 'https://script.google.com/macros/s/AKfycbwKyA5uqY8L8gRc1wyxK_ihrfXGmX7XHKsyJ4XN3nOsk0bEhiQt8Qr6vI5Jb1ASrNwYAA/exec';
-  const experimentId = 'email-signup-v1';
+  const experimentId = 'family-recommendation-v1';
   const params = new URLSearchParams(location.search);
   function readStorage(store, key) {
     try { return window[store].getItem(key); } catch { return null; }
@@ -38,6 +38,12 @@
   const advice = document.querySelector('#submit-advice');
   const button = document.querySelector('#submit');
   const status = document.querySelector('#signup-status');
+  const survey = document.querySelector('#survey-options');
+  const surveyStatus = document.querySelector('#survey-status');
+  const answers = ['yes', 'unsure', 'no'];
+  const savedAnswer = readStorage('localStorage', `${storageKey}:survey`);
+  let surveyAnswer = !isTest && answers.includes(savedAnswer) ? savedAnswer : null;
+  let surveySending = false;
   let submitted = !isTest && readStorage('localStorage', `${storageKey}:submitted`) === '1';
   let sending = false;
   let visitSaved = false;
@@ -74,9 +80,47 @@
     status.dataset.state = 'success';
     status.textContent = '신청해 주셔서 고맙습니다. 출시 소식을 이메일로 알려드릴게요.';
   }
-  if (isTest) document.querySelector('#signup-test-note').hidden = false;
+  function showSurveySuccess() {
+    survey.querySelectorAll('button').forEach(option => {
+      option.disabled = true;
+      option.setAttribute('aria-pressed', String(option.dataset.answer === surveyAnswer));
+    });
+    surveyStatus.dataset.state = 'success';
+    surveyStatus.textContent = '답변해 주셔서 고맙습니다. 의견이 잘 전달됐어요.';
+  }
+  if (isTest) {
+    const note = document.querySelector('#signup-test-note');
+    note.hidden = false;
+    note.textContent = '테스트 접속입니다. 설문과 이메일 신청은 실험 결과에서 제외됩니다.';
+  }
+  if (surveyAnswer) showSurveySuccess();
   if (submitted) showSuccess();
   saveVisit().catch(() => { /* 제출 시 재시도하여 방문 기록과 신청 기록을 연결합니다. */ });
+  survey.addEventListener('click', async event => {
+    const selected = event.target.closest('button[data-answer]');
+    if (!selected || !survey.contains(selected) || surveySending || surveyAnswer || !answers.includes(selected.dataset.answer)) return;
+    surveySending = true;
+    const answer = selected.dataset.answer;
+    survey.querySelectorAll('button').forEach(option => { option.disabled = true; });
+    survey.setAttribute('aria-busy', 'true');
+    surveyStatus.dataset.state = '';
+    surveyStatus.textContent = '답변을 보내고 있어요…';
+    try {
+      await saveVisit();
+      await insert('tab_final', { ...common, time_stamp: new Date().toISOString(),
+        response_type: 'survey', recommendation: answer, email: '', advice: '' });
+      surveyAnswer = answer;
+      if (!isTest) writeStorage('localStorage', `${storageKey}:survey`, answer);
+      showSurveySuccess();
+    } catch {
+      surveyStatus.dataset.state = 'error';
+      surveyStatus.textContent = '답변 저장을 확인하지 못했어요. 잠시 후 다시 눌러 주세요.';
+      survey.querySelectorAll('button').forEach(option => { option.disabled = false; });
+    } finally {
+      surveySending = false;
+      survey.removeAttribute('aria-busy');
+    }
+  });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (sending || submitted) return;
@@ -90,7 +134,8 @@
     status.textContent = '';
     try {
       await saveVisit();
-      await insert('tab_final', { ...common, time_stamp: new Date().toISOString(), email: email.value, advice: advice.value.trim() });
+      await insert('tab_final', { ...common, time_stamp: new Date().toISOString(), email: email.value,
+        advice: advice.value.trim(), response_type: 'email', recommendation: '' });
       submitted = true;
       if (!isTest) writeStorage('localStorage', `${storageKey}:submitted`, '1');
       form.reset();
